@@ -13,7 +13,7 @@ services:
     environment:
       APP_ENV: dev
       APP_SECRET: 1234567890qwertyuiop
-      DATABASE_URL: postgresql://postgres:LwcaqNJtSSaDRPmDYrVW@db:5432/shelter
+      DATABASE_URL: postgresql://postgres:CHANGE_ME@db:5432/DB_NAME
     networks:
       - local
       - nginx
@@ -21,8 +21,8 @@ services:
     image: postgres:14-alpine
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: LwcaqNJtSSaDRPmDYrVW
-      POSTGRES_DB: shelter
+      POSTGRES_PASSWORD: CHANGE_ME
+      POSTGRES_DB: DB_NAME
     volumes:
       - ./docker/db/:/var/lib/postgresql/data
     networks:
