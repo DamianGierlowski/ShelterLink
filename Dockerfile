@@ -23,6 +23,7 @@ RUN docker-php-ext-install opcache
 RUN apt-get update && \
      apt-get install -y \
          libzip-dev \
+         libicu-dev \
          zlib1g-dev \
 		 libpq-dev \
 		 rpl \
