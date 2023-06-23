@@ -27,8 +27,7 @@ services:
       - ./docker/db/:/var/lib/postgresql/data
     networks:
       - local
-      - nginx
-      -
+
 networks:
   local:
     external: false
