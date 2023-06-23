@@ -2,7 +2,6 @@ version: "3.9"
 services:
   app:
     build: .
-    #image: docker.pl/app
     restart: always
     container_name: app
     hostname: app

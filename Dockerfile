@@ -26,6 +26,7 @@ RUN apt-get update && \
          zlib1g-dev \
 		 libpq-dev \
 		 rpl \
+         php-intl \
          && docker-php-ext-install zip
 
 # instalacja GD
