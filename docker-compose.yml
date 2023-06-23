@@ -27,10 +27,6 @@ services:
       - db-data:/var/lib/postgresql/data
     networks:
       - local
-      - nginx
-
-volumes:
-  db-data:
 
 networks:
   local:
