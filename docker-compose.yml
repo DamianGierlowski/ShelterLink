@@ -13,7 +13,7 @@ services:
     environment:
       APP_ENV: dev
       APP_SECRET: 1234567890qwertyuiop
-      DATABASE_URL: postgresql://postgres:LwcaqNJtSSaDRPmDYrVW@db:5432/wiki
+      DATABASE_URL: postgresql://postgres:LwcaqNJtSSaDRPmDYrVW@db:5432/shelter
     networks:
       - local
       - nginx
@@ -22,7 +22,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: LwcaqNJtSSaDRPmDYrVW
-      POSTGRES_DB: wiki
+      POSTGRES_DB: shelter
     volumes:
       - db-data:/var/lib/postgresql/data
     networks:
@@ -31,7 +31,7 @@ services:
 
 volumes:
   db-data:
-    
+
 networks:
   local:
     external: false
