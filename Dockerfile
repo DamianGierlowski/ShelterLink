@@ -26,7 +26,6 @@ RUN apt-get update && \
          zlib1g-dev \
 		 libpq-dev \
 		 rpl \
-         php8.1-intl \
          && docker-php-ext-install zip intl
 
 RUN docker-php-ext-install intl
