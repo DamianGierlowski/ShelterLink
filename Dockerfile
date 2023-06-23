@@ -27,7 +27,9 @@ RUN apt-get update && \
 		 libpq-dev \
 		 rpl \
          php8.1-intl \
-         && docker-php-ext-install zip && docker-php-ext-install intl
+         && docker-php-ext-install zip intl
+
+RUN docker-php-ext-install intl
 
 # instalacja GD
 RUN apt-get install -y libpng-dev && \
