@@ -1,0 +1,13 @@
+sidebar:
+  genre: 'Gatunki'
+  animals: 'Zwierzęta'
+  rooms: 'Pomieszczenia'
+  logout: 'Wyloguj'
+  login: 'Zaloguj'
+animals:
+  title: 'Zwierzęta'
+  chip: 'Nr. Chip'
+  name: 'Imię'
+  birthday: 'Data urodzenia'
+  gender: 'Płeć'
+  actions: 'Akcje'

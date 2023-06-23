@@ -1,21 +1,39 @@
-version: '3'
-
+version: "3.9"
 services:
-###> doctrine/doctrine-bundle ###
-  database:
-    image: postgres:${POSTGRES_VERSION:-15}-alpine
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB:-app}
-      # You should definitely change the password in production
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
-      POSTGRES_USER: ${POSTGRES_USER:-app}
+  app:
+    build: .
+    #image: docker.pl/app
+    restart: always
+    container_name: app
+    hostname: app
+    ports:
+      - "80:80"
     volumes:
-      - database_data:/var/lib/postgresql/data:rw
-      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
-      # - ./docker/db/data:/var/lib/postgresql/data:rw
-###< doctrine/doctrine-bundle ###
+      - ./docker/app/:/var/www/html/var/
+    environment:
+      APP_ENV: dev
+      APP_SECRET: 1234567890qwertyuiop
+      DATABASE_URL: postgresql://postgres:LwcaqNJtSSaDRPmDYrVW@db:5432/wiki
+    networks:
+      - local
+      - nginx
+  db:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: LwcaqNJtSSaDRPmDYrVW
+      POSTGRES_DB: wiki
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - local
+      - nginx
 
 volumes:
-###> doctrine/doctrine-bundle ###
-  database_data:
-###< doctrine/doctrine-bundle ###
+  db-data:
+    
+networks:
+  local:
+    external: false
+  nginx:
+    external: true
