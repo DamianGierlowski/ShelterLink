@@ -24,14 +24,11 @@ services:
       POSTGRES_PASSWORD: LwcaqNJtSSaDRPmDYrVW
       POSTGRES_DB: shelter
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - ./docker/db/:/var/lib/postgresql/data
     networks:
       - local
       - nginx
-
-volumes:
-  db-data:
-
+      -
 networks:
   local:
     external: false
