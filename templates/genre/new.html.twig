@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Genre{% endblock %}
+
+{% block body %}
+    <h1>Create new Genre</h1>
+
+    {{ include('genre/_form.html.twig') }}
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Guid</th>
+            <th>Name</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for genre in genres %}
+            <tr>
+                <td>{{ genre.id }}</td>
+                <td>{{ genre.guid }}</td>
+                <td>{{ genre.name }}</td>
+                <td>
+                    <a href="{{ path('app_genre_show', {'id': genre.id}) }}">show</a>
+                    <a href="{{ path('app_genre_edit', {'id': genre.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CatalogController!{% endblock %}
+
+{% block body %}
+<style>
+    .table-image {
+    td, th {
+        vertical-align: middle;
+    }
+    }
+</style>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th></th>
+            <th>{{ 'animals.chip'|trans }}</th>
+            <th>{{ 'animals.name'|trans }}</th>
+            <th>{{ 'animals.birthday'|trans }}</th>
+            <th>{{ 'animals.gender'|trans }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for animal in animals %}
+            <tr>
+                <td class="w-25">
+                    <img src="{{ asset('archive/' ~ animal.file.fileName ?? '') }}" class="img-fluid img-thumbnail" alt="Sheep">
+                </td>
+                <td>{{ animal.chip }}</td>
+                <td>{{ animal.name }}</td>
+                <td>{{ animal.birthdayDate ? animal.birthdayDate|date('Y-m-d') : '' }}</td>
+                <td>{{ animal.gender }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

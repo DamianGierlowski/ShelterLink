@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Animal index{% endblock %}
+
+{% block body %}
+    <h1>Animal index</h1>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th>{{ 'animals.chip'|trans }}</th>
+            <th>{{ 'animals.name'|trans }}</th>
+            <th>{{ 'animals.colour'|trans }}</th>
+            <th>{{ 'animals.gender'|trans }}</th>
+            <th>{{ 'animals.genre'|trans }}</th>
+            <th>{{ 'animals.birthday'|trans }}</th>
+            {% if is_granted('ROLE_MODERATOR') %}
+            <th>{{ 'animals.actions'|trans }}</th>
+            {% endif %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for animal in animals %}
+            <tr>
+                <td>{{ animal.chip }}</td>
+                <td>{{ animal.name }}</td>
+                <td>{{ animal.colour }}</td>
+                <td>{{ animal.gender }}</td>
+                <td>{{ animal.genre.name }}</td>
+                <td>{{ animal.birthdayDate ? animal.birthdayDate|date('Y-m-d') : '' }}</td>
+                {% if is_granted('ROLE_MODERATOR') %}
+                <td>
+                    <a href="{{ path('app_animal_show', {'id': animal.id}) }}">show</a>
+                    <a href="{{ path('app_animal_edit', {'id': animal.id}) }}">edit</a>
+                </td>
+                {% endif %}
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    </div>
+
+
+
+
+    <a href="{{ path('app_animal_new') }}">Create new</a>
+{% endblock %}
