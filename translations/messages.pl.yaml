@@ -4,6 +4,7 @@ sidebar:
   rooms: 'Pomieszczenia'
   logout: 'Wyloguj'
   login: 'Zaloguj'
+  register: 'Rejestracja'
 animals:
   title: 'Zwierzęta'
   chip: 'Nr. Chip'

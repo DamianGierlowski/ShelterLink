@@ -14,49 +14,73 @@
         {% endblock %}
     </head>
     <body>
-    <div class="container-fluid">
-        <div class="row flex-nowrap">
-            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                    <a href="{{ path('app_dashboard') }}" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+{#    <div class="container-fluid">#}
+{#        <div class="row flex-nowrap">#}
+{#            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">#}
+{#                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">#}
+{#                    <a href="{{ path('app_dashboard') }}" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">#}
 {#                        <span class="fs-5 d-none d-sm-inline"></span>#}
-                    </a>
-                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+{#                    </a>#}
+{#                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">#}
 
-                        {% if is_granted('ROLE_MODERATOR') %}
-                        <li class="nav-item">
-                            <a href="{{ path('app_animal_index') }}" class="nav-link align-middle px-0">
-                                <i class="fs-4 bi-house">A</i> <span class="ms-1 d-none d-sm-inline">{{ 'sidebar.animals'|trans }}</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ path('app_genre_index') }}" class="nav-link align-middle px-0">
-                                <i class="fs-4 bi-house">G</i> <span class="ms-1 d-none d-sm-inline">{{ 'sidebar.genre'|trans() }}</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ path('app_room_index') }}" class="nav-link align-middle px-0">
-                                <i class="fs-4 bi-house">R</i> <span class="ms-1 d-none d-sm-inline">{{ 'sidebar.rooms'|trans }}</span>
-                            </a>
-                        </li>
-                        {% endif %}
+{#                        {% if is_granted('ROLE_MODERATOR') %}#}
+{#                        <li class="nav-item">#}
+{#                            <a href="{{ path('app_animal_index') }}" class="nav-link align-middle px-0">#}
+{#                                <i class="fs-4 bi-house">A</i> <span class="ms-1 d-none d-sm-inline">{{ 'sidebar.animals'|trans }}</span>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item">#}
+{#                            <a href="{{ path('app_genre_index') }}" class="nav-link align-middle px-0">#}
+{#                                <i class="fs-4 bi-house">G</i> <span class="ms-1 d-none d-sm-inline">{{ 'sidebar.genre'|trans() }}</span>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item">#}
+{#                            <a href="{{ path('app_room_index') }}" class="nav-link align-middle px-0">#}
+{#                                <i class="fs-4 bi-house">R</i> <span class="ms-1 d-none d-sm-inline">{{ 'sidebar.rooms'|trans }}</span>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        {% endif %}#}
 
-                    </ul>
-                    <hr>
-                    {% if is_granted('ROLE_USER') %}
-                    <span class="d-none d-sm-inline mx-1"> <a href="{{ path('app_logout') }}" class="nav-link align-middle px-0">{{ 'sidebar.logout'|trans }}</span>
-                    {% else %}
-                        <span class="d-none d-sm-inline mx-1"> <a href="{{ path('app_login') }}" class="nav-link align-middle px-0">{{ 'sidebar.login'|trans }}</span>
-                    {% endif %}
+{#                    </ul>#}
+{#                    <hr>#}
+{#                    {% if is_granted('ROLE_USER') %}#}
+{#                        <span class="d-none d-sm-inline mx-1"> <a href="{{ path('app_logout') }}" class="nav-link align-middle px-0">{{ 'sidebar.logout'|trans }}</span>#}
+{#                    {% else %}#}
+{#                        <span class="d-none d-sm-inline mx-1"> <a href="{{ path('app_login') }}" class="nav-link align-middle px-0">{{ 'sidebar.login'|trans }}</span>#}
+{#                    {% endif %}#}
 
 {#               #}
-                </div>
-            </div>
-            <div class="col py-3">
-                {% block body %}{% endblock %}
-            </div>
-        </div>
-    </div>
+{#                </div>#}
+{#            </div>#}
 
+{#<div class="container-fluid">#}
+{#    <div class="row">#}
+{#        <div class="col-md-3">#}
+{#            <div class="sidebar">#}
+{#                <ul class="nav flex-column">#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="#">Strona główna</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="#">O schronisku</a>#}
+{#                    </li>#}
+{#                    <!-- Pozostałe linki do podstron schroniska -->#}
+{#                </ul>#}
+{#                <div class="bottom-links">#}
+{#                    {% if is_granted('ROLE_USER') %}#}
+{#                        <a class="nav-link" href="{{ path('app_logout') }}">Wyloguj</a>#}
+{#                    {% else %}#}
+{#                        <a class="nav-link" href="{{ path('app_register') }}">Rejestracja</a>#}
+{#                        <a class="nav-link" href="{{ path('app_login') }}">Logowanie</a>#}
+{#                    {% endif %}#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="col-md-9">#}
+            {% block body %}
+            {% endblock %}
+{#        </div>#}
+    </div>
+</div>
     </body>
 </html>
