@@ -32,11 +32,11 @@ class Animal
 
     #[ORM\ManyToOne(inversedBy: 'animals')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?genre $genre = null;
+    private ?Genre $genre = null;
 
     #[ORM\ManyToOne(inversedBy: 'animals')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?room $room = null;
+    private ?Room $room = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $colour = null;
