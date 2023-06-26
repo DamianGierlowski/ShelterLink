@@ -6,6 +6,8 @@
 <div class="table-responsive border rounded border-primary p-3 m-5 text-center">
     <h1>{{ 'room.title'|trans }}</h1>
 
+    {{ include('room/_form.html.twig') }}
+
     <table class="table table-bordered table-hover">
         <thead class="thead-dark">
         <tr>
@@ -18,7 +20,8 @@
             <tr>
                 <td>{{ room.code }}</td>
                 <td>
-                    <a href="{{ path('app_catalog_show', {'guid': room.guid}) }}">{{ 'room.animals'|trans }}</a>
+                    <a href="{{ path('app_room_edit', {'id': room.id}) }}">{{ 'common.edit'|trans }}</a>
+                    <a href="{{ path('app_room_delete', {'id': room.id}) }}">{{ 'common.delete'|trans }}</a>
                 </td>
             </tr>
         {% else %}

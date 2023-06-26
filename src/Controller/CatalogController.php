@@ -16,7 +16,7 @@ class CatalogController extends AbstractController
         RoomRepository $roomRepository,
     ): Response
     {
-        return $this->render('room/index.html.twig', [
+        return $this->render('catalog/index.html.twig', [
             'rooms' => $roomRepository->findAll(),
         ]);
     }

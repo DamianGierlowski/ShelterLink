@@ -13,6 +13,7 @@ use App\Util\FileUploader;
 use App\Util\GuidGenerator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -34,7 +35,7 @@ class AdminController extends AbstractController
         RoomRepository $roomRepository,
         GenreRepository $genreRepository,
         EntityManagerInterface $entityManager,
-    )
+    ): RedirectResponse
     {
         $form = $this->createForm(FileImportType::class, );
         $form->handleRequest($request);
@@ -60,16 +61,15 @@ class AdminController extends AbstractController
                      ->setGuid(GuidGenerator::generate())
                      ->setChip($animal->getChip())
                  ;
-             }
-
-                $cleanName = preg_replace('/^[A-Za-z0-9\s]+(?=\s)/', "", $animal->getName());
+             }$cleanName = preg_replace('/^[A-Za-z0-9\s]+(?=\s)/', "", $animal->getName());
                 $room = $roomRepository->findOneBy(['code' => trim(preg_replace("/\.\d+/", '', $animal->getRoom()))]);
                 if (null === $room) {
 
                     continue;
                 }
+
                 $foundAnimal
-                    ->setName($cleanName)
+                    ->setName($animal->getName())
                     ->setRoom($room)
                     ->setColour($animal->getColour())
                     ->setGender("5" == $animal->getGender()? "F" : "M")

@@ -5,6 +5,7 @@ sidebar:
   logout: 'Wyloguj'
   login: 'Zaloguj'
   register: 'Rejestracja'
+  catalog: 'Katalog'
 animals:
   add_title: 'Dodaj zwierze'
   title: 'Zwierzęta'

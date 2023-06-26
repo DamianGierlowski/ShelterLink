@@ -1,32 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ room.code|trans }}{% endblock %}
+{% block title %}{{ 'room.code'|trans }}{% endblock %}
 
 {% block body %}
-    <table class="table table-bordered table-hover">
-        <thead class="thead-dark">
-        <tr>
-            <th>{{ 'room.code'|trans }}</th>
-            <th>{{ 'room.actions'|trans }}</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for room in rooms %}
+    <div class="table-responsive border rounded border-primary p-3 m-5 text-center">
+        <h1>{{ 'room.title'|trans }}</h1>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
             <tr>
-                <td>{{ room.code }}</td>
-                <td>
-                    <a href="{{ path('app_room_edit', {'id': room.id}) }}">{{ 'common.edit'|trans }}</a>
-                    <a href="{{ path('app_room_delete', {'id': room.id}) }}">{{ 'common.delete'|trans }}</a>
-                    <a href="{{ path('app_catalog', {'guid': room.guid}) }}">{{ 'room.animals'|trans }}</a>
-                </td>
+                <th>{{ 'room.code'|trans }}</th>
+                <th>{{ 'room.actions'|trans }}</th>
             </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">{{ 'common.empty'|trans }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for room in rooms %}
+                <tr>
+                    <td>{{ room.code }}</td>
+                    <td>
+                        <a href="{{ path('app_catalog_show', {'guid': room.guid}) }}">{{ 'room.animals'|trans }}</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">{{ 'common.empty'|trans }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
     </div>
 
