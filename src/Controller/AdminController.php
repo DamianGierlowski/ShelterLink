@@ -35,7 +35,7 @@ class AdminController extends AbstractController
         RoomRepository $roomRepository,
         GenreRepository $genreRepository,
         EntityManagerInterface $entityManager,
-    ): RedirectResponse
+    ): RedirectResponse|Response
     {
         $form = $this->createForm(FileImportType::class, );
         $form->handleRequest($request);
