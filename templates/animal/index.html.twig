@@ -3,9 +3,8 @@
 {% block title %}Animal index{% endblock %}
 
 {% block body %}
-    <h1>Animal index</h1>
-
-    <div class="table-responsive">
+    <div class="table-responsive border rounded border-primary p-3 m-5 text-center">
+        <h1>{{ 'animals.title'|trans }}</h1>
         <table class="table table-bordered table-hover">
         <thead class="thead-dark">
         <tr>
@@ -38,15 +37,16 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="7">{{ 'common.empty'|trans }}</td>
             </tr>
         {% endfor %}
         </tbody>
         </table>
+
+        <a href="{{ path('app_animal_new') }}">{{ 'common.new'|trans }}</a>
     </div>
 
 
 
 
-    <a href="{{ path('app_animal_new') }}">Create new</a>
 {% endblock %}

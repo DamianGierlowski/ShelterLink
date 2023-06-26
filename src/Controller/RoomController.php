@@ -52,18 +52,17 @@ class RoomController extends AbstractController
             return $this->redirectToRoute('app_room_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('room/edit.html.twig', [
+        return $this->render('room/index.html.twig', [
             'room' => $room,
             'form' => $form,
+            'rooms' => $roomRepository->findAll(),
         ]);
     }
 
-    #[Route('/{id}', name: 'app_room_delete', methods: ['POST'])]
-    public function delete(Request $request, Room $room, RoomRepository $roomRepository): Response
+    #[Route('/{id}', name: 'app_room_delete', methods: ['GET'])]
+    public function delete(Room $room, RoomRepository $roomRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$room->getId(), $request->request->get('_token'))) {
-            $roomRepository->remove($room, true);
-        }
+        $roomRepository->remove($room, true);
 
         return $this->redirectToRoute('app_room_index', [], Response::HTTP_SEE_OTHER);
     }

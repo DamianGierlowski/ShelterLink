@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\AnimalRepository;
+use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -23,8 +24,8 @@ class Animal
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $birthday_date = null;
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?DateTimeInterface $birthday_date = null;
 
     #[ORM\Column(length: 255)]
     private ?string $gender = null;
@@ -84,12 +85,12 @@ class Animal
         return $this;
     }
 
-    public function getBirthdayDate(): ?\DateTimeInterface
+    public function getBirthdayDate(): ?DateTimeInterface
     {
         return $this->birthday_date;
     }
 
-    public function setBirthdayDate(\DateTimeInterface $birthday_date): self
+    public function setBirthdayDate(?DateTimeInterface $birthday_date): self
     {
         $this->birthday_date = $birthday_date;
 

@@ -6,9 +6,31 @@ sidebar:
   login: 'Zaloguj'
   register: 'Rejestracja'
 animals:
+  add_title: 'Dodaj zwierze'
   title: 'Zwierzęta'
   chip: 'Nr. Chip'
   name: 'Imię'
   birthday: 'Data urodzenia'
   gender: 'Płeć'
   actions: 'Akcje'
+  colour: 'Barwa'
+  genre: 'Gatunek'
+  rooom: 'Pomieszczenie'
+room:
+  title: 'Pomieszczenia'
+  code: 'Kod'
+  actions: 'Akcje'
+  animals: 'Zwierzęta'
+genre:
+  title: 'Gatunki'
+  name: 'Nazwa'
+  actions: 'Akcje'
+
+common:
+  back: 'Powrót'
+  new: 'Dodaj nowy'
+  edit: 'Edycja'
+  show: 'Szczegóły'
+  delete: 'Usuń'
+  submit: 'Zapisz'
+  empty: 'Brak wyników'

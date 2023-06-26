@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Import;
 
 use App\Entity\Animal;
 use App\Entity\Genre;
@@ -13,32 +13,11 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 
-class AnimalType extends AbstractType
+class FileImportType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('chip')
-            ->add('name')
-            ->add('birthday_date')
-            ->add('colour')
-            ->add('gender',ChoiceType::class, [
-                'choices'  => [
-                    'M' => 'M',
-                    'F' => 'F',
-
-                ],
-            ])
-            ->add('genre',EntityType::class, [
-                'class' => Genre::class,
-                'choice_label' => 'name',
-                'required' => true,
-            ])
-            ->add('room',EntityType::class, [
-                'class' => Room::class,
-                'choice_label' => 'code',
-                'required' => true,
-            ])
             ->add('file', FileType::class, [
                 'label' => 'File',
                 'mapped' => false,
@@ -49,8 +28,5 @@ class AnimalType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([
-            'data_class' => Animal::class,
-        ]);
     }
 }

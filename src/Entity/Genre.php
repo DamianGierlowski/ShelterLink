@@ -22,7 +22,6 @@ class Genre
     #[ORM\Column]
     private ?string $guid = null;
 
-    #[Assert\Unique]
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 

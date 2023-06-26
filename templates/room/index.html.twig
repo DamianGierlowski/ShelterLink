@@ -3,32 +3,32 @@
 {% block title %}Room index{% endblock %}
 
 {% block body %}
+<div class="table-responsive border rounded border-primary p-3 m-5 text-center">
+    <h1>{{ 'room.title'|trans }}</h1>
 
-    <h1>Create new Room</h1>
-
-    {{ include('room/_form.html.twig') }}
-    <h1>Room index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Code</th>
-                <th>actions</th>
-            </tr>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th>{{ 'room.code'|trans }}</th>
+            <th>{{ 'room.actions'|trans }}</th>
+        </tr>
         </thead>
         <tbody>
         {% for room in rooms %}
             <tr>
                 <td>{{ room.code }}</td>
                 <td>
-                    <a href="{{ path('app_room_edit', {'id': room.id}) }}">edit</a>
+                    <a href="{{ path('app_catalog_show', {'guid': room.guid}) }}">{{ 'room.animals'|trans }}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="7">{{ 'common.empty'|trans }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+
+</div>
+
 {% endblock %}

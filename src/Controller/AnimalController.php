@@ -39,10 +39,14 @@ class AnimalController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $file = $form->get('file')->getData();
 
-            $uploaded = $fileUploader->upload($file);
+            if (null !== $file) {
+                $uploaded = $fileUploader->upload($file);
+                $animal->setFile($uploaded);
+            }
+
 
             $animal->setGuid(GuidGenerator::generate());
-            $animal->setFile($uploaded);
+
             $animalRepository->save($animal, true);
 
             return $this->redirectToRoute('app_animal_index', [], Response::HTTP_SEE_OTHER);
@@ -63,12 +67,25 @@ class AnimalController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_animal_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Animal $animal, AnimalRepository $animalRepository): Response
+    public function edit(
+        Request $request,
+        Animal $animal,
+        AnimalRepository $animalRepository,
+        FileUploader $fileUploader
+    ): Response
     {
         $form = $this->createForm(AnimalType::class, $animal);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $form->get('file')->getData();
+
+            if (null !== $file) {
+                $uploaded = $fileUploader->upload($file);
+                $animal->setFile($uploaded);
+            }
+
+
             $animalRepository->save($animal, true);
 
             return $this->redirectToRoute('app_animal_index', [], Response::HTTP_SEE_OTHER);

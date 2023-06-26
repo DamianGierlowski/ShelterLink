@@ -77,6 +77,29 @@
 {#            </div>#}
 {#        </div>#}
 {#        <div class="col-md-9">#}
+
+<div class="top-bar">
+    <ul class="nav">
+{#        <li class="nav-item">#}
+{#            <a class="nav-link" href="#">Strona główna</a>#}
+{#        </li>#}
+{#        <li class="nav-item">#}
+{#            <a class="nav-link" href="#">O schronisku</a>#}
+{#        </li>#}
+        <!-- Pozostałe linki do podstron schroniska -->
+    </ul>
+    <div class="right-links">
+{#        {% if is_granted("ROLE_USER") %}#}
+{#            <a class="nav-link" href="{{ path('app_logout') }}">Wyloguj</a>#}
+{#        {% else %}#}
+{#            <a class="nav-link" href="{{ path('app_register') }}">Rejestracja</a>#}
+{#            <a class="nav-link" href="{{ path('app_login') }}">Logowanie</a>#}
+{#        {% endif %}#}
+    </div>
+</div>
+
+
+
             {% block body %}
             {% endblock %}
 {#        </div>#}

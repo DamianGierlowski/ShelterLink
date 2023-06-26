@@ -1,3 +1,23 @@
 body {
     background-color: lightgray;
 }
+
+.top-bar {
+    background-color: #f2f2f2;
+    padding: 10px;
+    /* Dodaj inne właściwości stylu, takie jak kolor tekstu, marginesy, itp. */
+}
+
+.top-bar .nav {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.top-bar .nav-item {
+    display: inline-block;
+}
+
+.top-bar .right-links {
+    float: right;
+    /* Dodaj odpowiednie style dla linków na prawo */
+}

@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ room.code|trans }}{% endblock %}
+
+{% block body %}
+
+{#<div class="table-responsive border rounded border-primary p-3 m-5 text-center">#}
+{#    <h1>{{ room.code|trans }}</h1>#}
+{#    <table class="table table-bordered table-hover">#}
+{#        <thead class="thead-dark">#}
+{#        <tr>#}
+{#            <th></th>#}
+{#            <th>{{ 'animals.chip'|trans }}</th>#}
+{#            <th>{{ 'animals.name'|trans }}</th>#}
+{#            <th>{{ 'animals.colour'|trans }}</th>#}
+{#            <th>{{ 'animals.gender'|trans }}</th>#}
+
+{#        </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#        {% for animal in animals %}#}
+{#            <tr>#}
+{#                <td class="w-25 h-25">#}
+{#                    <img src="{{ asset('archive/' ~ animal.file.fileName ?? '') }}" class="img-fluid img-thumbnail" alt="Sheep">#}
+{#                </td>#}
+{#                <td>{{ animal.chip }}</td>#}
+{#                <td>{{ animal.name }}</td>#}
+{#                <td>{{ animal.colour }}</td>#}
+{#                <td>{{ animal.gender }}</td>#}
+
+{#            </tr>#}
+{#        {% else %}#}
+{#            <tr>#}
+{#                <td colspan="7">{{ 'common.empty'|trans }}</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
+{#</div>#}
+
+    <div class="table-responsive border rounded border-primary p-3 m-5 text-center">
+        <h1>{{ room.code|trans }}</h1>
+        <a href="{{ path('app_catalog',) }}">{{ 'common.back'|trans }}</a>
+
+            {% for animal in animals %}
+
+                    <div class="w-25 ">
+                        <img src="{{ asset('archive/' ~ animal.file.fileName ?? '') }}" class="img-fluid img-thumbnail" alt="Sheep">
+                    </div>
+        <h3>{{ 'animals.chip'|trans }}</h3> <p>{{ animal.chip }}</p>
+
+        <h3>{{ 'animals.name'|trans }}</h3> <p>{{ animal.name }}</p>
+
+        <h3>{{ 'animals.colour'|trans }}</h3> <p>{{ animal.colour }}</p>
+
+        <h3>{{ 'animals.gender'|trans }}</h3> <p>{{ animal.gender }}</p>
+
+        <hr class="my-4">
+            {% else %}
+
+                    <p >{{ 'common.empty'|trans }}</td>
+            {% endfor %}
+    </div>
+
+{% endblock %}
