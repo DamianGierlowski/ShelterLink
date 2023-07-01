@@ -28,6 +28,9 @@ class Genre
     #[ORM\OneToMany(mappedBy: 'genre', targetEntity: Animal::class)]
     private Collection $animals;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?File $File = null;
+
     public function __construct()
     {
         $this->animals = new ArrayCollection();
@@ -91,4 +94,17 @@ class Genre
 
         return $this;
     }
+
+    public function getFile(): ?File
+    {
+        return $this->File;
+    }
+
+    public function setFile(?File $File): Genre
+    {
+        $this->File = $File;
+        return $this;
+    }
+
+
 }

@@ -16,7 +16,8 @@ animals:
   actions: 'Akcje'
   colour: 'Barwa'
   genre: 'Gatunek'
-  rooom: 'Pomieszczenie'
+  room: 'Pomieszczenie'
+  file: 'Zdjecie'
 room:
   title: 'Pomieszczenia'
   code: 'Kod'
@@ -35,3 +36,19 @@ common:
   delete: 'Usuń'
   submit: 'Zapisz'
   empty: 'Brak wyników'
+
+admin:
+  user:
+    add_title: 'Dodawanie użytkownika'
+    edit_title: 'Edycja użytkownika'
+    title: 'Użytkownicy'
+    password: 'Hasło'
+    email: 'Adres mailowy'
+    roles: 'Role'
+    actions: 'Akcje'
+
+views:
+  home:
+    title: 'Kogo dzisiaj odwiedzisz?'
+    cat: Koty
+    dog: Psy

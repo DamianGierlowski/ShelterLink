@@ -18,6 +18,7 @@ class FileImportType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+
             ->add('file', FileType::class, [
                 'label' => 'File',
                 'mapped' => false,

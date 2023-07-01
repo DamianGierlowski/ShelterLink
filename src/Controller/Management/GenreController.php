@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Management;
 
 use App\Entity\Genre;
 use App\Form\GenreType;
 use App\Repository\GenreRepository;
+use App\Util\FileUploader;
 use App\Util\GuidGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,14 +19,24 @@ class GenreController extends AbstractController
 {
 
     #[Route('/', name: 'app_genre_index', methods: ['GET', 'POST'])]
-    public function new(Request $request, GenreRepository $genreRepository): Response
-    {
+    public function new(
+        Request $request,
+        GenreRepository $genreRepository,
+        FileUploader $fileUploader,
+    ): Response {
         $genre = new Genre();
         $form = $this->createForm(GenreType::class, $genre);
         $form->handleRequest($request);
 
         
         if ($form->isSubmitted() && $form->isValid())  {
+            $file = $form->get('file')->getData();
+
+            if (null !== $file) {
+                $uploaded = $fileUploader->upload($file);
+                $genre->setFile($uploaded);
+            }
+
             $genre->setGuid(GuidGenerator::generate());
             $genreRepository->save($genre, true);
 
@@ -40,12 +51,23 @@ class GenreController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_genre_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Genre $genre, GenreRepository $genreRepository): Response
-    {
+    public function edit(
+        Request $request,
+        Genre $genre,
+        GenreRepository $genreRepository,
+        FileUploader $fileUploader,
+    ): Response {
         $form = $this->createForm(GenreType::class, $genre);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $form->get('file')->getData();
+
+            if (null !== $file) {
+                $uploaded = $fileUploader->upload($file);
+                $genre->setFile($uploaded);
+            }
+
             $genreRepository->save($genre, true);
 
             return $this->redirectToRoute('app_genre_index', [], Response::HTTP_SEE_OTHER);

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Management;
 
 use App\Entity\Animal;
 use App\Form\AnimalType;
@@ -58,13 +58,6 @@ class AnimalController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_animal_show', methods: ['GET'])]
-    public function show(Animal $animal): Response
-    {
-        return $this->render('animal/show.html.twig', [
-            'animal' => $animal,
-        ]);
-    }
 
     #[Route('/{id}/edit', name: 'app_animal_edit', methods: ['GET', 'POST'])]
     public function edit(

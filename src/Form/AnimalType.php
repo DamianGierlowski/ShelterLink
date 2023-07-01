@@ -26,7 +26,6 @@ class AnimalType extends AbstractType
                 'choices'  => [
                     'M' => 'M',
                     'F' => 'F',
-
                 ],
             ])
             ->add('genre',EntityType::class, [
@@ -37,7 +36,7 @@ class AnimalType extends AbstractType
             ->add('room',EntityType::class, [
                 'class' => Room::class,
                 'choice_label' => 'code',
-                'required' => true,
+                'required' => false,
             ])
             ->add('file', FileType::class, [
                 'label' => 'File',

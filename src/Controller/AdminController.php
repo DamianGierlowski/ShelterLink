@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\Animal;
 use App\Form\AnimalType;
 use App\Form\Import\FileImportType;
-use App\Model\CatImportModel;
+use App\Model\AnimalImportModel;
 use App\Repository\AnimalRepository;
 use App\Repository\GenreRepository;
 use App\Repository\RoomRepository;
@@ -26,8 +26,8 @@ use Symfony\Component\Serializer\SerializerInterface;
 class AdminController extends AbstractController
 {
 
-    #[Route('/cat/import', name: 'app_admin_cat_import')]
-    public function importCatsAnimals(
+//    #[Route('/import', name: 'app_admin_import')]
+    public function import(
         Request $request,
         FileUploader $fileUploader,
         SerializerInterface $serializer,
@@ -45,7 +45,7 @@ class AdminController extends AbstractController
 
             $csvData = file_get_contents($file->getPathName());
 
-            $animals = $serializer->deserialize($csvData, CatImportModel::class.'[]', 'csv');
+            $animals = $serializer->deserialize($csvData, AnimalImportModel::class.'[]', 'csv');
             $genre = $genreRepository->findOneBy(['name' => 'Kot']);
             foreach ($animals as $animal)
             {
@@ -61,7 +61,8 @@ class AdminController extends AbstractController
                      ->setGuid(GuidGenerator::generate())
                      ->setChip($animal->getChip())
                  ;
-             }$cleanName = preg_replace('/^[A-Za-z0-9\s]+(?=\s)/', "", $animal->getName());
+             }
+             $cleanName = preg_replace('/^[A-Za-z0-9\s]+(?=\s)/', "", $animal->getName());
                 $room = $roomRepository->findOneBy(['code' => trim(preg_replace("/\.\d+/", '', $animal->getRoom()))]);
                 if (null === $room) {
 
@@ -86,8 +87,6 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('app_admin_cat_import', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('admin/import.html.twig', [
-            'form' => $form,
-        ]);
+
     }
 }

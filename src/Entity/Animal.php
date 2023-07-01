@@ -35,7 +35,7 @@ class Animal
     private ?Genre $genre = null;
 
     #[ORM\ManyToOne(inversedBy: 'animals')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Room $room = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -109,24 +109,24 @@ class Animal
         return $this;
     }
 
-    public function getGenre(): ?genre
+    public function getGenre(): ?Genre
     {
         return $this->genre;
     }
 
-    public function setGenre(?genre $genre): self
+    public function setGenre(?Genre $genre): self
     {
         $this->genre = $genre;
 
         return $this;
     }
 
-    public function getRoom(): ?room
+    public function getRoom(): ?Room
     {
         return $this->room;
     }
 
-    public function setRoom(?room $room): self
+    public function setRoom(?Room $room): self
     {
         $this->room = $room;
 

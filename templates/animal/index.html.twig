@@ -5,9 +5,11 @@
 {% block body %}
     <div class="table-responsive border rounded border-primary p-3 m-5 text-center">
         <h1>{{ 'animals.title'|trans }}</h1>
+        <a href="{{ path('app_animal_new') }}">{{ 'common.new'|trans }}</a>
         <table class="table table-bordered table-hover">
         <thead class="thead-dark">
         <tr>
+            <th>{{ 'animals.room'|trans }}</th>
             <th>{{ 'animals.chip'|trans }}</th>
             <th>{{ 'animals.name'|trans }}</th>
             <th>{{ 'animals.colour'|trans }}</th>
@@ -22,6 +24,7 @@
         <tbody>
         {% for animal in animals %}
             <tr>
+                <td>{{ animal.room.code ?? '' }}</td>
                 <td>{{ animal.chip }}</td>
                 <td>{{ animal.name }}</td>
                 <td>{{ animal.colour }}</td>
@@ -30,8 +33,7 @@
                 <td>{{ animal.birthdayDate ? animal.birthdayDate|date('Y-m-d') : '' }}</td>
                 {% if is_granted('ROLE_MODERATOR') %}
                 <td>
-                    <a href="{{ path('app_animal_show', {'id': animal.id}) }}">show</a>
-                    <a href="{{ path('app_animal_edit', {'id': animal.id}) }}">edit</a>
+                    <a href="{{ path('app_animal_edit', {'id': animal.id}) }}">{{ 'common.edit'|trans }}</a>
                 </td>
                 {% endif %}
             </tr>
@@ -43,7 +45,7 @@
         </tbody>
         </table>
 
-        <a href="{{ path('app_animal_new') }}">{{ 'common.new'|trans }}</a>
+
     </div>
 
 
