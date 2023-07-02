@@ -1,0 +1,33 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            {{ form_start(form, {'attr': {'class': 'form'} }) }}
+
+            <div class="form-group row mb-2">
+                <label for="{{ form.email.vars.id }}" class="col-sm-2 col-form-label">{{'admin.user.email'|trans}}</label>
+                <div class="col-sm-10">
+                    {{ form_widget(form.email, {'attr': {'class': 'form-control'} }) }}
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label for="{{ form.roles.vars.id }}" class="col-sm-2 col-form-label">{{'admin.user.roles'|trans}}</label>
+                <div class="col-sm-10">
+                    {{ form_widget(form.roles, {'attr': {'class': 'form-control'} }) }}
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label for="{{ form.password.vars.id }}" class="col-sm-2 col-form-label">{{'admin.user.password'|trans}}</label>
+                <div class="col-sm-10">
+                    {{ form_widget(form.password, {'attr': {'class': 'form-control'} }) }}
+                </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Wyślij</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>

@@ -50,5 +50,9 @@ admin:
 views:
   home:
     title: 'Kogo dzisiaj odwiedzisz?'
-    cat: Koty
-    dog: Psy
+    cat: 'Koty'
+    dog: 'Psy'
+  management:
+    genre:
+      name: 'Nazwa'
+      actions: 'Akcje'

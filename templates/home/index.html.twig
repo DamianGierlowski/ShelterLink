@@ -8,31 +8,14 @@
             {{ 'views.home.title'|trans }}
         </h1>
         <div class="flex flex-col place-items-center lg:flex-row">
-            <div class="mt-24 text-center lg:ml-24">
-                <a href="">
-                    <img src="{{ asset('images/happy.png') }}" alt="{{ 'views.home.cat'|trans }}" class="max-w-sm mb-9 lg:w-44">
-                    <span class="text-8xl text-center shelter-green lg:text-3xl">{{ 'views.home.cat'|trans }}</span>
-                </a>
-            </div>
-
-            <div class="mt-24 text-center lg:ml-24">
-                <a href="">
-                    <img src="{{ asset('images/border-collie.png') }}" alt="{{ 'views.home.dog'|trans }}" class="max-w-sm mb-9 lg:w-44">
-                    <span class="text-8xl text-center shelter-green lg:text-3xl">{{ 'views.home.dog'|trans }}</span>
-                </a>
-            </div>
-            <div class="mt-24 text-center lg:ml-24">
-                <a href="">
-                    <img src="{{ asset('images/border-collie.png') }}" alt="{{ 'views.home.dog'|trans }}" class="max-w-sm mb-9 lg:w-44">
-                    <span class="text-8xl text-center shelter-green lg:text-3xl">{{ 'views.home.management'|trans }}</span>
-                </a>
-            </div>
-            <div class="mt-24 text-center lg:ml-24">
-                <a href="">
-                    <img src="{{ asset('images/border-collie.png') }}" alt="{{ 'views.home.dog'|trans }}" class="max-w-sm mb-9 lg:w-44">
-                    <span class="text-8xl text-center shelter-green lg:text-3xl">{{ 'views.home.administration'|trans }}</span>
-                </a>
-            </div>
+            {% for genre in genres %}
+                <div class="mt-24 text-center lg:ml-24">
+                    <a href="{{ path('app_catalog', {'guid': genre.guid}) }}">
+                        <img src="{{ asset(genre.file ? 'archive/' ~ genre.file.fileName :  'images/question.png') }}" alt="" class="max-w-sm mb-9 lg:w-44">
+                        <span class="text-8xl text-center shelter-green lg:text-3xl">{{ genre.name }}</span>
+                    </a>
+                </div>
+            {% endfor %}
         </div>
     </div>
 

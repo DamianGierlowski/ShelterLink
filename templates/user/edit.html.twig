@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit User{% endblock %}
+
+{% block body %}
+
+    <div class="table-responsive border rounded border-primary p-3 m-5 text-center">
+        <h1>{{ 'admin.user.edit_title'|trans }}</h1>
+        {{ include('user/_form.html.twig') }}
+
+        <a href="{{ path('app_user_index') }}">{{ 'common.back'|trans }}</a>
+        {{ include('user/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

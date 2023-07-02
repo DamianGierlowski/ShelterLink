@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'admin.user.title'|trans }}{% endblock %}
+
+{% block body %}
+<div class="table-responsive border rounded border-primary p-3 m-5 text-center">
+    <h1>{{ 'admin.user.title'|trans }}</h1>
+    <a href="{{ path('app_user_new') }}">{{ 'common.new'|trans }}</a>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+
+            <tr>
+                <th>{{ 'admin.user.email'|trans }}</th>
+                <th>{{ 'admin.user.roles'|trans }}</th>
+                <th>{{ 'admin.user.actions'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">{{ 'common.edit'|trans }}</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">{{ 'common.empty'|trans }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+</div>
+{% endblock %}
