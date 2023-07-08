@@ -7,8 +7,12 @@ body {
 
 .shelter-green {
     color: #009241;
+}
+
+.shelter-font {
     font-family: 'Nunito', sans-serif;
 }
+
 .bg-shelter-green {
     background-color: #009241;
 }

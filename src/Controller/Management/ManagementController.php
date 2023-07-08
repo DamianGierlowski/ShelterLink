@@ -9,15 +9,14 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/management')]
+#[IsGranted('ROLE_WORKER')]
 class ManagementController extends AbstractController
 {
     #[Route('/', name: 'app_management')]
     public function index(
-        GenreRepository $genreRepository,
     ): Response
     {
-        return $this->render('home/index.html.twig', [
-            'genres' => $genreRepository->findAll(),
+        return $this->render('management/index.html.twig', [
         ]);
     }
 }

@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/room')]
-#[IsGranted('ROLE_MODERATOR')]
+#[IsGranted('ROLE_WORKER')]
 class RoomController extends AbstractController
 {
     #[Route('/', name: 'app_room_index', methods: ['GET','POST'])]

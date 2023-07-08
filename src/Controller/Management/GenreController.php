@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/genre')]
-#[IsGranted('ROLE_MODERATOR')]
+#[IsGranted('ROLE_WORKER')]
 class GenreController extends AbstractController
 {
 

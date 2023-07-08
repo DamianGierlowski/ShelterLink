@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/animal')]
-#[IsGranted('ROLE_MODERATOR')]
+#[IsGranted('ROLE_WORKER')]
 class AnimalController extends AbstractController
 {
     #[Route('/', name: 'app_animal_index', methods: ['GET'])]

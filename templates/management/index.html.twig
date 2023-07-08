@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ShelterLine{% endblock %}
+
+{% block body %}
+    <div>
+        <h1 class="mt-24 text-9xl font-bold text-center shelter-green lg:text-4xl">
+            MANAGEMENT
+        </h1>
+        <div class="flex flex-col place-items-center lg:flex-row">
+                <div class="mt-24 text-center lg:ml-24">
+                    <a href="{{ path('app_genre_index') }}">
+                        <span class="text-8xl text-center shelter-green lg:text-3xl">Genre</span>
+                    </a>
+                </div>
+            <div class="mt-24 text-center lg:ml-24">
+                <a href="{{ path('app_animal_index') }}">
+                    <span class="text-8xl text-center shelter-green lg:text-3xl">Animal</span>
+                </a>
+            </div>
+            <div class="mt-24 text-center lg:ml-24">
+                <a href="{{ path('app_room_index') }}">
+                    <span class="text-8xl text-center shelter-green lg:text-3xl">Room</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
