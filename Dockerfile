@@ -5,7 +5,7 @@ RUN composer install --ignore-platform-reqs --no-interaction --no-scripts --pref
 
 FROM node:16.13.1 AS npm
 WORKDIR /app
-COPY ./package.json ./webpack.config.js /app/
+COPY ./package.json ./webpack.config.js ./tailwind.config.js ./postcss.config.js /app/
 RUN npm install
 COPY ./assets/ /app/assets/
 COPY ./templates/ /app/templates/
