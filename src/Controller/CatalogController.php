@@ -6,6 +6,7 @@ use App\Entity\Animal;
 use App\Entity\Genre;
 use App\Entity\Room;
 use App\Repository\RoomRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -31,18 +32,22 @@ class CatalogController extends AbstractController
         }
         sort($rooms);
         return $this->render('catalog/index.html.twig', [
-            'rooms' => $rooms
+            'rooms' => $rooms,
+            'genre' => $genre,
         ]);
     }
 
-    #[Route('/show/{guid}', name: 'app_catalog_show')]
+    #[Route('/{genreGuid}/show/{guid}', name: 'app_catalog_show')]
+    #[ParamConverter('genre', options: ['mapping' => ['genreGuid' => 'guid']])]
     public function show(
+        Genre $genre,
         Room $room,
     ): Response
     {
         return $this->render('catalog/show.html.twig', [
             'animals' => $room->getAnimals(),
             'room' => $room,
+            'genre' => $genre
         ]);
     }
 

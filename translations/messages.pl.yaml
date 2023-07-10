@@ -52,6 +52,13 @@ views:
     title: 'Kogo dzisiaj odwiedzisz?'
     cat: 'Koty'
     dog: 'Psy'
+  catalog:
+    title: 'Pomieszczenia'
+    show:
+      fields:
+        chip: 'Nr. Chip:'
+        colour: 'Ubarwienie:'
+        gender: 'Płeć:'
   management:
     genre:
       name: 'Nazwa'

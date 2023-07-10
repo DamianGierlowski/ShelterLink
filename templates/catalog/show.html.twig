@@ -4,62 +4,48 @@
 
 {% block body %}
 
-{#<div class="table-responsive border rounded border-primary p-3 m-5 text-center">#}
-{#    <h1>{{ room.code|trans }}</h1>#}
-{#    <table class="table table-bordered table-hover">#}
-{#        <thead class="thead-dark">#}
-{#        <tr>#}
-{#            <th></th>#}
-{#            <th>{{ 'animals.chip'|trans }}</th>#}
-{#            <th>{{ 'animals.name'|trans }}</th>#}
-{#            <th>{{ 'animals.colour'|trans }}</th>#}
-{#            <th>{{ 'animals.gender'|trans }}</th>#}
+    <div class="w-full mb-36 flex flex-col justify-center items-center">
+        <h1 class="my-24 mt-36 text-7xl font-bold shelter-font">
+            {{ room.code }}
+        </h1>
 
-{#        </tr>#}
-{#        </thead>#}
-{#        <tbody>#}
-{#        {% for animal in animals %}#}
-{#            <tr>#}
-{#                <td class="w-25 h-25">#}
-{#                    <img src="{{ asset('archive/' ~ animal.file.fileName ?? '') }}" class="img-fluid img-thumbnail" alt="Sheep">#}
-{#                </td>#}
-{#                <td>{{ animal.chip }}</td>#}
-{#                <td>{{ animal.name }}</td>#}
-{#                <td>{{ animal.colour }}</td>#}
-{#                <td>{{ animal.gender }}</td>#}
 
-{#            </tr>#}
-{#        {% else %}#}
-{#            <tr>#}
-{#                <td colspan="7">{{ 'common.empty'|trans }}</td>#}
-{#            </tr>#}
-{#        {% endfor %}#}
-{#        </tbody>#}
-{#    </table>#}
-{#</div>#}
+        {% for animal in animals %}
+            <div class="border-8 w-11/12 mb-9 rounded-[70px] overflow-hidden shelter-border">
+                <div class="h-[60rem]">
+                    <img src="{{ asset(animal.file ? 'archive/' ~ animal.file.fileName :  'archive/0188F34C-CBF2-7E12-B6B8-92A9120140A7.jpg') }}" class="w-full h-full object-fill" alt="Sheep">
+                </div>
 
-    <div class="table-responsive border rounded border-primary p-3 m-5 text-center">
-        <h1>{{ room.code|trans }}</h1>
-        <a href="{{ path('app_catalog',) }}">{{ 'common.back'|trans }}</a>
+                <div class="h-96 flex flex-col shelter-font">
 
-            {% for animal in animals %}
+                    <span class="shelter-green text-6xl my-10 ml-12">{{ animal.name }}</span>
+                    <div><span class="font-bold text-4xl ml-12 mb-6">{{ 'views.catalog.show.fields.chip'|trans }} </span> <span class="text-4xl">{{ animal.chip }}</span></div>
+                    <div><span class="font-bold text-4xl ml-12 mb-5">{{ 'views.catalog.show.fields.gender'|trans }} </span> <span class="text-4xl">{{ animal.gender }}</span></div>
+                    <div><span class="font-bold text-4xl ml-12 mb-5">{{ 'views.catalog.show.fields.colour'|trans }} </span> <span class="text-4xl">{{ animal.chip }}</span></div>
 
-                    <div class="w-25 ">
-                        <img src="{{ asset('archive/' ~ animal.file.fileName ?? '') }}" class="img-fluid img-thumbnail" alt="Sheep">
-                    </div>
-        <h3>{{ 'animals.chip'|trans }}</h3> <p>{{ animal.chip }}</p>
+                </div>
 
-        <h3>{{ 'animals.name'|trans }}</h3> <p>{{ animal.name }}</p>
 
-        <h3>{{ 'animals.colour'|trans }}</h3> <p>{{ animal.colour }}</p>
+            </div>
 
-        <h3>{{ 'animals.gender'|trans }}</h3> <p>{{ animal.gender }}</p>
+        {% endfor %}
 
-        <hr class="my-4">
-            {% else %}
 
-                    <p >{{ 'common.empty'|trans }}</td>
-            {% endfor %}
     </div>
+
+    <div class="sticky bottom-0 z-50 w-full h-32 shadow-inner bg-white">
+        <div class="flex h-full place-content-center">
+            <a class="w-1/3 mt-4 flex-1 shelter-font items-center" href="{{ path('app_catalog', {'guid':genre.guid}) }}">
+                <img src="{{ asset('images/arrow_back.png') }}" alt="" class="w-24 mx-auto">
+            </a>
+            <a class="w-1/3 mt-4 flex-1 shelter-font" href="{{ path('app_home') }}">
+                <img src="{{ asset('images/home.png') }}" alt="" class="w-24 mx-auto">
+            </a>
+            <div class="w-1/3 mt-4 flex-1 shelter-font">
+                {#                    <img src="{{ asset('images/search.png') }}" alt="" class="w-24 mx-auto">#}
+            </div>
+        </div>
+    </div>
+
 
 {% endblock %}

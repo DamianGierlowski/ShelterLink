@@ -16,6 +16,11 @@ body {
 .bg-shelter-green {
     background-color: #009241;
 }
+
+.shelter-border {
+    border-color: #009241;
+}
+
 html,
 body {
     height: 100%;
