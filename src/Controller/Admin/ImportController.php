@@ -30,7 +30,7 @@ class ImportController extends AbstractController
 
             $importService->handleImportForm($form);
 
-            return $this->redirectToRoute('app_admin_cat_import', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_admin_import', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('admin/import.html.twig', [

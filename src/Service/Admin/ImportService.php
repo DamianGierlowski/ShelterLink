@@ -44,13 +44,13 @@ class ImportService
                     ->setChip($animal->getChip())
                 ;
             }
-            $cleanName = preg_replace('/^[A-Za-z0-9\s]+(?=\s)/', '', $animal->getName());
+            $cleanName = preg_replace('/^[A-Za-z0-9\s]+(?=\s)/', '', trim($animal->getName()));
             $cleanRoom = trim(preg_replace('/\.\d+/', '', $animal->getRoom()));
 
             $room = $this->roomRepository->findOneBy(['code' => $cleanRoom]);
 
             $found
-                ->setName($animal->getName())
+                ->setName($cleanName)
                 ->setRoom($room)
                 ->setColour($animal->getColour())
                 ->setGender("5" == $animal->getGender()? "F" : "M")
