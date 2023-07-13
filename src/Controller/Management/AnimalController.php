@@ -40,7 +40,9 @@ class AnimalController extends AbstractController
             $file = $form->get('file')->getData();
 
             if (null !== $file) {
-                $uploaded = $fileUploader->upload($file);
+                $path =  $this->getParameter('archive');
+
+                $uploaded = $fileUploader->upload($file, $path);
                 $animal->setFile($uploaded);
             }
 
@@ -74,7 +76,9 @@ class AnimalController extends AbstractController
             $file = $form->get('file')->getData();
 
             if (null !== $file) {
-                $uploaded = $fileUploader->upload($file);
+                $path =  $this->getParameter('archive');
+
+                $uploaded = $fileUploader->upload($file, $path);
                 $animal->setFile($uploaded);
             }
 

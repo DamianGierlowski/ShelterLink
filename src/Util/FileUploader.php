@@ -20,7 +20,7 @@ class FileUploader
     ) {
     }
 
-    public function upload(UploadedFile $uploadedFile): File
+    public function upload(UploadedFile $uploadedFile, string $path): File
     {
         try {
             $file = new File();
@@ -30,7 +30,10 @@ class FileUploader
             $fileName = $file->getGuid() . '.' . $uploadedFile->guessExtension();
             $file->setFilename($fileName);
 
-            $uploadedFile->move($this->targetDirectory, $fileName);
+            $uploadedFile->move(
+                $path,
+                $fileName
+            );
             $this->entityManager->persist($file);
             $this->entityManager->flush();
 

@@ -33,7 +33,10 @@ class GenreController extends AbstractController
             $file = $form->get('file')->getData();
 
             if (null !== $file) {
-                $uploaded = $fileUploader->upload($file);
+
+                $path =  $this->getParameter('archive');
+
+                $uploaded = $fileUploader->upload($file, $path);
                 $genre->setFile($uploaded);
             }
 
@@ -64,7 +67,8 @@ class GenreController extends AbstractController
             $file = $form->get('file')->getData();
 
             if (null !== $file) {
-                $uploaded = $fileUploader->upload($file);
+                $path = $this->getParameter('archive');
+                $uploaded = $fileUploader->upload($file, $path);
                 $genre->setFile($uploaded);
             }
 
