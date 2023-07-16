@@ -12,15 +12,23 @@
                 <div class="text-center ml-16 mr-5 mt-10">
                     <a href="{{ path('app_catalog', {'guid': genre.guid}) }}">
                         <img src="{{ asset(genre.file ? 'archive/' ~ genre.file.fileName :  'images/question.png') }}" alt="" class="rounded-3xl drop-shadow-xl object-cover w-96 h-96 mb-9 lg:w-36 lg:h-36">
-                        <span class="place-self-center text-8xl shelter-font mb-24 lg:text-5xl">{{ genre.name }}</span>
+                        <span class="place-self-center text-7xl shelter-font mb-24 lg:text-5xl">{{ genre.name }}</span>
                     </a>
                 </div>
             {% endfor %}
+            {% if is_granted("ROLE_WORKER") %}
+                <div class="text-center ml-16 mr-5 mt-10">
+                    <a href="{{ path('app_management') }}">
+                        <img src="{{ asset('images/gear.png') }}" alt="" class="rounded-3xl drop-shadow-xl object-cover w-96 h-96 mb-9 lg:w-36 lg:h-36">
+                        <span class="place-self-center text-7xl shelter-font mb-24 lg:text-5xl">{{ 'views.home.management'|trans }}</span>
+                    </a>
+                </div>
+            {% endif %}
         </div>
     </div>
 
 
-    <div class="fixed bottom-0 z-50 w-full h-32 shadow-inner bg-white lg:h-24 ">
+    <div class="fixed bottom-0 z-50 w-full h-32 shadow-inner-big bg-white lg:h-24 ">
         <div class="flex place-content-center">
                 <div class="w-1/3 mt-4 flex-1 shelter-font items-center">
 {#                    <img src="{{ asset('images/arrow_back.png') }}" alt="" class="w-24 mx-auto">#}

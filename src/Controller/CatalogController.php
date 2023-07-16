@@ -17,7 +17,6 @@ class CatalogController extends AbstractController
     #[Route('/{guid}', name: 'app_catalog')]
     public function index(
         Genre $genre,
-        RoomRepository $roomRepository,
     ): Response
     {
         $rooms = [];
@@ -31,6 +30,7 @@ class CatalogController extends AbstractController
          $rooms[$animal->getRoom()?->getCode()] = $animal?->getRoom();
         }
         sort($rooms);
+
         return $this->render('catalog/index.html.twig', [
             'rooms' => $rooms,
             'genre' => $genre,

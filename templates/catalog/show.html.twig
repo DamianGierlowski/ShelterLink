@@ -3,23 +3,35 @@
 {% block title %}{{ room.code }}{% endblock %}
 
 {% block body %}
-    <h1 class="my-24 mt-36 text-7xl lg:text-5xl font-bold shelter-font text-center">
-        {{ room.code }}
+
+    {% if true == room.locked %}
+    <h1 class="my-12  text-7xl lg:text-5xl font-bold shelter-font text-red-500 text-center">
+        {{ 'views.catalog.show.title'|trans }}{{ room.code }}
     </h1>
-    <div class="w-full mb-36 flex flex-col lg:flex-row lg:flex-wrap justify-center items-center">
+    {% else %}
+    <h1 class="my-12 mt-36 text-7xl lg:text-5xl font-bold shelter-font shelter-green text-center">
+        {{ 'views.catalog.show.title'|trans }}{{ room.code }}
+    </h1>
+    {% endif %}
+    <div class="w-full flex flex-col lg:flex-row lg:flex-wrap justify-center items-center pb-36">
 
 
         {% for animal in animals %}
-            <div class="border-8 w-11/12 mb-9 rounded-[70px] lg:rounded-[25px] overflow-hidden shelter-border lg:flex-initial lg:w-[20rem] lg:mx-10">
+            <div class="border-8 w-11/12 mb-9 rounded-[70px] shadow-xl lg:rounded-[25px] overflow-hidden shelter-border lg:flex-initial lg:w-[20rem] lg:mx-10">
+
+                {% if null != animal.file  %}
                 <div class="h-[60rem] lg:h-[20rem] ">
-                    <img src="{{ asset(animal.file ? 'archive/' ~ animal.file.fileName :  'images/question.png') }}" class="w-full h-full object-fill" alt="Sheep">
+                    <img src="{{ asset(animal.file ? 'archive/' ~ animal.file.fileName :  'images/question.png') }}" class="w-full h-full object-fill" >
                 </div>
+                {% endif %}
 
                 <div class="h-96 flex flex-col shelter-font lg:h-64">
-                    <span class="shelter-green text-6xl my-10 ml-12 lg:text-2xl lg:ml-6">{{ animal.name }}</span>
+                    <span class="shelter-green text-6xl my-10 ml-12 lg:text-2xl lg:ml-6 lg:mb-4">{{ animal.name }}</span>
                     <div><span class="font-bold text-4xl ml-12 mb-6 lg:text-xl lg:ml-6">{{ 'views.catalog.show.fields.chip'|trans }} </span> <span class="text-4xl lg:text-xl">{{ animal.chip }}</span></div>
                     <div><span class="font-bold text-4xl ml-12 mb-5 lg:text-xl lg:ml-6">{{ 'views.catalog.show.fields.gender'|trans }} </span> <span class="text-4xl lg:text-xl">{{ animal.gender }}</span></div>
                     <div><span class="font-bold text-4xl ml-12 mb-5 lg:text-xl lg:ml-6">{{ 'views.catalog.show.fields.colour'|trans }} </span> <span class="text-4xl lg:text-xl">{{ animal.colour  }}</span></div>
+                    <div><span class="font-bold text-4xl ml-12 mb-5 lg:text-xl lg:ml-6">{{ 'views.catalog.show.fields.birthday'|trans }} </span> <span class="text-4xl lg:text-xl">{{ animal.birthdayDate|date("m-Y")  }}</span></div>
+                    <div><span class="font-bold text-4xl ml-12 mb-5 lg:text-xl lg:ml-6">{{ 'views.catalog.show.fields.admission'|trans }} </span> <span class="text-4xl lg:text-xl">{{ animal.birthdayDate|date("d-m-Y")  }}</span></div>
                 </div>
 
 
@@ -29,20 +41,6 @@
 
 
     </div>
-
-    <div class="sticky bottom-0 z-50 w-full h-32 shadow-inner bg-white lg:h-24">
-        <div class="flex h-full place-content-center">
-            <a class="w-1/3 mt-4 flex-1 shelter-font items-center" href="{{ path('app_catalog', {'guid':genre.guid}) }}">
-                <img src="{{ asset('images/arrow_back.png') }}" alt="" class="w-24 lg:w-16 mx-auto">
-            </a>
-            <a class="w-1/3 mt-4 flex-1 shelter-font" href="{{ path('app_home') }}">
-                <img src="{{ asset('images/home.png') }}" alt="" class="w-24 lg:w-16 mx-auto">
-            </a>
-            <div class="w-1/3 mt-4 flex-1 shelter-font">
-                {#                    <img src="{{ asset('images/search.png') }}" alt="" class="w-24 mx-auto">#}
-            </div>
-        </div>
-    </div>
-
+    {% include 'partials/_nav_bottom.html.twig' with {back_redirect: 'app_catalog', parameters: {'guid':genre.guid}}%}
 
 {% endblock %}

@@ -28,6 +28,9 @@ class Room
     #[ORM\OneToMany(mappedBy: 'room', targetEntity: Animal::class)]
     private Collection $animals;
 
+    #[ORM\Column(nullable: true)]
+    private bool $locked = false;
+
     public function __construct()
     {
         $this->animals = new ArrayCollection();
@@ -88,6 +91,18 @@ class Room
                 $animal->setRoom(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isLocked(): ?bool
+    {
+        return $this->locked;
+    }
+
+    public function setLocked(bool $locked): static
+    {
+        $this->locked = $locked;
 
         return $this;
     }
