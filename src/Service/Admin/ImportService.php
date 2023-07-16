@@ -8,6 +8,7 @@ use App\Repository\AnimalRepository;
 use App\Repository\GenreRepository;
 use App\Repository\RoomRepository;
 use App\Util\GuidGenerator;
+use DateTimeImmutable;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
@@ -30,6 +31,8 @@ class ImportService
 
         $data = $this->serializer->deserialize($csvData, AnimalImportModel::class.'[]', 'csv');
         $genre = $form->get('genre')->getData();
+
+        /** @var AnimalImportModel $animal */
         foreach ($data as $animal)
         {
             if (null === $animal->getChip() || empty($animal->getChip())) {
@@ -49,12 +52,16 @@ class ImportService
 
             $room = $this->roomRepository->findOneBy(['code' => $cleanRoom]);
 
+            $birtDate = new DateTimeImmutable($animal->getBirthday());
+
             $found
                 ->setName($cleanName)
                 ->setRoom($room)
                 ->setColour($animal->getColour())
                 ->setGender("5" == $animal->getGender()? "F" : "M")
                 ->setGenre($genre)
+                ->setBirthdayDate($birtDate)
+                ->setAdmissionDate($birtDate)
             ;
 
           $this->animalRepository->save($found, true);

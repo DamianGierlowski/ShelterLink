@@ -50,15 +50,22 @@ admin:
 views:
   home:
     title: 'Kogo dzisiaj odwiedzisz?'
-    cat: 'Koty'
-    dog: 'Psy'
+    management: 'Zarządzanie'
   catalog:
-    title: 'Pomieszczenia'
+    title: 'WYBIERZ POMIESZCZENIE'
+    desc: ' kolor oznacza niedostępne pomieszczenia'
+    red: 'CZERWONE'
+    available: 'DOSTĘPNE'
+    not_available: 'NIEDOSTĘPNE'
+    green: 'ZIELONE'
     show:
+      title: "POMIESZCZENIE - "
       fields:
         chip: 'Nr. Chip:'
         colour: 'Ubarwienie:'
         gender: 'Płeć:'
+        admission: 'Data przyjęcia:'
+        birthday: 'Data urodzenia:'
   management:
     genre:
       name: 'Nazwa'

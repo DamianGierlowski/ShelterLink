@@ -106,5 +106,17 @@ class Genre
         return $this;
     }
 
+    public function isLocked(): ?bool
+    {
+        return $this->locked;
+    }
+
+    public function setLocked(bool $locked): static
+    {
+        $this->locked = $locked;
+
+        return $this;
+    }
+
 
 }

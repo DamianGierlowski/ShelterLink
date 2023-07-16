@@ -16,7 +16,6 @@ class ManagementController extends AbstractController
     public function index(
     ): Response
     {
-        return $this->render('management/index.html.twig', [
-        ]);
+        return $this->render('management/index.html.twig');
     }
 }
