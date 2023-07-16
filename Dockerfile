@@ -27,7 +27,7 @@ RUN apt-get update && \
          zlib1g-dev \
 		 libpq-dev \
 		 rpl \
-         && docker-php-ext-install zip intl
+         && docker-php-ext-install zip intl && usermod -u 1000 www-data
 
 RUN docker-php-ext-install intl
 

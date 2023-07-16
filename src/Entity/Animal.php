@@ -25,7 +25,10 @@ class Animal
     private ?string $name = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?DateTimeInterface $birthday_date = null;
+    private ?DateTimeInterface $birthdayDate = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?DateTimeInterface $admissionDate = null;
 
     #[ORM\Column(length: 255)]
     private ?string $gender = null;
@@ -81,18 +84,6 @@ class Animal
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getBirthdayDate(): ?DateTimeInterface
-    {
-        return $this->birthday_date;
-    }
-
-    public function setBirthdayDate(?DateTimeInterface $birthday_date): self
-    {
-        $this->birthday_date = $birthday_date;
 
         return $this;
     }
@@ -156,4 +147,31 @@ class Animal
 
         return $this;
     }
+
+    public function getBirthdayDate(): ?DateTimeInterface
+    {
+        return $this->birthdayDate;
+    }
+
+    public function setBirthdayDate(?DateTimeInterface $birthdayDate): Animal
+    {
+        $this->birthdayDate = $birthdayDate;
+
+        return $this;
+    }
+
+    public function getAdmissionDate(): ?DateTimeInterface
+    {
+        return $this->admissionDate;
+    }
+
+    public function setAdmissionDate(?DateTimeInterface $admissionDate): Animal
+    {
+        $this->admissionDate = $admissionDate;
+        return $this;
+    }
+
+
+
+
 }

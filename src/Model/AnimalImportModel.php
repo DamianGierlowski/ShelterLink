@@ -17,6 +17,11 @@ class AnimalImportModel
     private string $gender = '';
     #[SerializedName('miejsce')]
     private string $room = '';
+    #[SerializedName('Wiek')]
+    private string $birthday = '';
+    #[SerializedName('Przyjecie')]
+    private string $admission = '';
+
 
     public function getChip(): string
     {
@@ -70,6 +75,28 @@ class AnimalImportModel
     public function setRoom(string $room): AnimalImportModel
     {
         $this->room = $room;
+        return $this;
+    }
+
+    public function getBirthday(): string
+    {
+        return $this->birthday;
+    }
+
+    public function setBirthday(string $birthday): AnimalImportModel
+    {
+        $this->birthday = $birthday;
+        return $this;
+    }
+
+    public function getAdmission(): string
+    {
+        return $this->admission;
+    }
+
+    public function setAdmission(string $admission): AnimalImportModel
+    {
+        $this->admission = $admission;
         return $this;
     }
 

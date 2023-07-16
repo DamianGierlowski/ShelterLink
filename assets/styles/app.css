@@ -9,6 +9,10 @@ body {
     color: #009241;
 }
 
+.shelter-text-green {
+    color: #009241;
+}
+
 .shelter-font {
     font-family: 'Nunito', sans-serif;
 }
@@ -20,6 +24,8 @@ body {
 .shelter-border {
     border-color: #009241;
 }
+
+.shadow-inner-big { box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.20) inset; }
 
 html,
 body {

@@ -20,7 +20,7 @@ class AnimalType extends AbstractType
         $builder
             ->add('chip')
             ->add('name')
-            ->add('birthday_date')
+//            ->add('birthday_date')
             ->add('colour')
             ->add('gender',ChoiceType::class, [
                 'choices'  => [

@@ -36,7 +36,6 @@ class FileUploader
             );
             $this->entityManager->persist($file);
             $this->entityManager->flush();
-
         } catch (FileException $e) {
             $this->fileUploaderLogger->error($e->getMessage());
         }
