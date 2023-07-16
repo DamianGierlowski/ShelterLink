@@ -17,12 +17,12 @@
                 </div>
             {% endfor %}
             {% if is_granted("ROLE_WORKER") %}
-            <div class="text-center ml-16 mr-5 mt-10">
-                <a href="{{ path('app_management') }}">
-                    <img src="{{ asset('images/gear.png') }}" alt="" class="rounded-3xl drop-shadow-xl object-cover w-96 h-96 mb-9 lg:w-36 lg:h-36">
-                    <span class="place-self-center text-7xl shelter-font mb-24 lg:text-5xl">{{ 'views.home.management'|trans }}</span>
-                </a>
-            </div>
+                <div class="text-center ml-16 mr-5 mt-10">
+                    <a href="{{ path('app_management') }}">
+                        <img src="{{ asset('images/gear.png') }}" alt="" class="rounded-3xl drop-shadow-xl object-cover w-96 h-96 mb-9 lg:w-36 lg:h-36">
+                        <span class="place-self-center text-7xl shelter-font mb-24 lg:text-5xl">{{ 'views.home.management'|trans }}</span>
+                    </a>
+                </div>
             {% endif %}
         </div>
     </div>

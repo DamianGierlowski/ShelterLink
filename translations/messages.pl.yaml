@@ -67,6 +67,13 @@ views:
         admission: 'Data przyjęcia:'
         birthday: 'Data urodzenia:'
   management:
+    title: 'ZARZĄDZANIE'
     genre:
+      title: 'Gatunki'
       name: 'Nazwa'
       actions: 'Akcje'
+    animals:
+      title: 'Zwierzęta'
+    rooms:
+      title: 'Pomieszczenia'
+

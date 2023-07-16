@@ -5,15 +5,15 @@
 {% block body %}
 
     {% if true == room.locked %}
-    <h1 class="my-24 mt-36 text-7xl lg:text-5xl font-bold shelter-font text-red-500 text-center">
+    <h1 class="my-12  text-7xl lg:text-5xl font-bold shelter-font text-red-500 text-center">
         {{ 'views.catalog.show.title'|trans }}{{ room.code }}
     </h1>
     {% else %}
-    <h1 class="my-24 mt-36 text-7xl lg:text-5xl font-bold shelter-font shelter-green text-center">
+    <h1 class="my-12 mt-36 text-7xl lg:text-5xl font-bold shelter-font shelter-green text-center">
         {{ 'views.catalog.show.title'|trans }}{{ room.code }}
     </h1>
     {% endif %}
-    <div class="w-full mb-36 flex flex-col lg:flex-row lg:flex-wrap justify-center items-center">
+    <div class="w-full flex flex-col lg:flex-row lg:flex-wrap justify-center items-center pb-36">
 
 
         {% for animal in animals %}
@@ -41,20 +41,6 @@
 
 
     </div>
-
-    <div class="sticky bottom-0 z-50 w-full h-32 shadow-inner-big bg-white lg:h-24">
-        <div class="flex h-full place-content-center">
-            <a class="w-1/3 mt-4 flex-1 shelter-font items-center" href="{{ path('app_catalog', {'guid':genre.guid}) }}">
-                <img src="{{ asset('images/arrow_back.png') }}" alt="" class="w-24 lg:w-16 mx-auto">
-            </a>
-            <a class="w-1/3 mt-4 flex-1 shelter-font" href="{{ path('app_home') }}">
-                <img src="{{ asset('images/home.png') }}" alt="" class="w-24 lg:w-16 mx-auto">
-            </a>
-            <div class="w-1/3 mt-4 flex-1 shelter-font">
-                {#                    <img src="{{ asset('images/search.png') }}" alt="" class="w-24 mx-auto">#}
-            </div>
-        </div>
-    </div>
-
+    {% include 'partials/_nav_bottom.html.twig' with {back_redirect: 'app_catalog', parameters: {'guid':genre.guid}}%}
 
 {% endblock %}
