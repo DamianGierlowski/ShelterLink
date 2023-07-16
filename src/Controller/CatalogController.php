@@ -27,7 +27,10 @@ class CatalogController extends AbstractController
                 continue;
             }
 
-         $rooms[$animal->getRoom()?->getCode()] = $animal?->getRoom();
+            if (null === $animal->getRoom()->getCode() ) {
+                continue;
+            }
+         $rooms[$animal->getRoom()->getCode()] = $animal?->getRoom();
         }
         sort($rooms);
 
