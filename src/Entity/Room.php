@@ -36,6 +36,16 @@ class Room
         $this->animals = new ArrayCollection();
     }
 
+    public function __toString(): string
+    {
+       return $this->code;
+    }
+
+    public function getIsApproved(): bool
+    {
+        return $this->animals->isEmpty();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,4 +116,6 @@ class Room
 
         return $this;
     }
+
+
 }
