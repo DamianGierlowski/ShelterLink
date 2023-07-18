@@ -50,9 +50,10 @@ class ImportService
             $cleanName = preg_replace('/^[A-Za-z0-9\s]+(?=\s)/', '', trim($animal->getName()));
             $cleanRoom = trim(preg_replace('/\.\d+/', '', $animal->getRoom()));
 
-            $room = $this->roomRepository->findOneBy(['code' => $cleanRoom]);
+            $room = $this->roomRepository->findOneBy(['code' => trim($cleanRoom)]);
 
             $birtDate = new DateTimeImmutable($animal->getBirthday());
+            $admisionDate = new DateTimeImmutable($animal->getAdmission());
 
             $found
                 ->setName($cleanName)
@@ -61,7 +62,7 @@ class ImportService
                 ->setGender("5" == $animal->getGender()? "F" : "M")
                 ->setGenre($genre)
                 ->setBirthdayDate($birtDate)
-                ->setAdmissionDate($birtDate)
+                ->setAdmissionDate($admisionDate)
             ;
 
           $this->animalRepository->save($found, true);

@@ -31,9 +31,17 @@ class Genre
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?File $File = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?string $image = null;
+
     public function __construct()
     {
         $this->animals = new ArrayCollection();
+    }
+
+    public function __toString(): string
+    {
+        return $this->name;
     }
 
     public function getId(): ?int
@@ -118,5 +126,25 @@ class Genre
         return $this;
     }
 
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
 
+    public function setImage(?string $image): Genre
+    {
+        $this->image = $image;
+        return $this;
+    }
+
+    public function getImageUrl(): ?string
+    {
+        if (!$this->image) {
+            return null;
+        }
+        if (strpos($this->image, '/') !== false) {
+            return $this->image;
+        }
+        return sprintf('/archive/genre/%s', $this->image);
+    }
 }

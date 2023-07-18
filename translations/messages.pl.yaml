@@ -24,9 +24,7 @@ room:
   actions: 'Akcje'
   animals: 'Zwierzęta'
 genre:
-  title: 'Gatunki'
-  name: 'Nazwa'
-  actions: 'Akcje'
+  title: 'Gatunek'
 
 common:
   back: 'Powrót'
@@ -38,14 +36,35 @@ common:
   empty: 'Brak wyników'
 
 admin:
-  user:
-    add_title: 'Dodawanie użytkownika'
-    edit_title: 'Edycja użytkownika'
-    title: 'Użytkownicy'
-    password: 'Hasło'
-    email: 'Adres mailowy'
-    roles: 'Role'
-    actions: 'Akcje'
+  back: 'Powrót'
+  genre:
+    title: 'Gatunki'
+    singular: 'Gatunek'
+    plural: 'Gatunki'
+    fields:
+      name: 'Nazwa'
+      image: 'Zdjecie'
+  room:
+    title: 'Pomieszczenia'
+    singular: 'Pomieszczenie'
+    plural: 'Pomieszczenia'
+    fields:
+      code: 'Kod pomieszczenia'
+      locked: 'Zablokowany'
+  animal:
+    title: 'Zwierzęta'
+    singular: 'Zwierzę'
+    plural: 'Zwierzęta'
+    fields:
+      chip: 'Nr. Chip'
+      name: 'Imię'
+      birthday_date: 'Data urodzenia'
+      admission_date: 'Data przyjęcia'
+      gender: 'Płeć'
+      colour: 'Ubarwienie'
+      room: 'Pomieszczenie'
+      genre: 'Gatunek'
+      image: 'Zdjęcie'
 
 views:
   home:

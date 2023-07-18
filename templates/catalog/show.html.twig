@@ -19,9 +19,9 @@
         {% for animal in animals %}
             <div class="border-8 w-11/12 mb-9 rounded-[70px] shadow-xl lg:rounded-[25px] overflow-hidden shelter-border lg:flex-initial lg:w-[20rem] lg:mx-10">
 
-                {% if null != animal.file  %}
+                {% if null != animal.image  %}
                 <div class="h-[60rem] lg:h-[20rem] ">
-                    <img src="{{ asset(animal.file ? 'archive/' ~ animal.file.fileName :  'images/question.png') }}" class="w-full h-full object-fill" >
+                    <img src="{{ asset(animal.image ? animal.getImageUrl() :  'images/question.png') }}" class="w-full h-full object-fill" >
                 </div>
                 {% endif %}
 

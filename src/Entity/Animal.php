@@ -44,8 +44,8 @@ class Animal
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $colour = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?File $File = null;
+    #[ORM\Column(nullable: true)]
+    private ?string $image = null;
 
     public function getId(): ?int
     {
@@ -136,18 +136,6 @@ class Animal
         return $this;
     }
 
-    public function getFile(): ?File
-    {
-        return $this->File;
-    }
-
-    public function setFile(?File $File): self
-    {
-        $this->File = $File;
-
-        return $this;
-    }
-
     public function getBirthdayDate(): ?DateTimeInterface
     {
         return $this->birthdayDate;
@@ -171,7 +159,25 @@ class Animal
         return $this;
     }
 
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
 
+    public function setImage(?string $image): Animal
+    {
+        $this->image = $image;
+        return $this;
+    }
 
-
+    public function getImageUrl(): ?string
+    {
+        if (!$this->image) {
+            return null;
+        }
+        if (strpos($this->image, '/') !== false) {
+            return $this->image;
+        }
+        return sprintf('/archive/animal/%s', $this->image);
+    }
 }
