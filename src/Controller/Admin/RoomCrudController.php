@@ -40,8 +40,7 @@ class RoomCrudController extends AbstractCrudController
                 });
 
                 return $action;
-            })
-            ->setPermission(Action::INDEX, 'ROLE_MODERATOR');
+            });
     }
 
     public function configureFields(string $pageName): iterable
