@@ -21,7 +21,7 @@
 
                 {% if null != animal.image  %}
                 <div class="h-[60rem] lg:h-[20rem] ">
-                    <img src="{{ asset(animal.image ? animal.getImageUrl() :  'images/question.png') }}" class="w-full h-full object-fill" >
+                    <img src="{{ asset(animal.image ? animal.getImageUrl() :  'images/question.png') }}" class="w-full h-full object-cover" >
                 </div>
                 {% endif %}
 
