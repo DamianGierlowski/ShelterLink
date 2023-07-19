@@ -47,3 +47,14 @@ COPY --from=npm /app/node_modules/ /var/www/html/node_modules/
 COPY --from=composer /app/vendor/ /var/www/html/vendor/
 COPY --from=npm /app/public/build/ /var/www/html/public/build/
 CMD apache2-foreground
+
+# Wykonaj migracje
+RUN php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
+
+RUN mkdir -p /public/archive \
+    && mkdir -p /public/archive/genre \
+    && mkdir -p /public/archive/animal
+
+RUN mkdir -p /var/log \
+    && mkdir -p /var/cache
+
