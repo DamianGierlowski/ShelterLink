@@ -56,5 +56,7 @@ RUN mkdir -p /public/archive \
     && mkdir -p /public/archive/animal
 
 RUN mkdir -p /var/log \
-    && mkdir -p /var/cache
+    && mkdir -p /var/cache \
+    && mkdir -p /var/cache/dev \
+    && mkdir -p /var/cache/prod \
 
