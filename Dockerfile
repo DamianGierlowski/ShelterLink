@@ -48,8 +48,8 @@ COPY --from=composer /app/vendor/ /var/www/html/vendor/
 COPY --from=npm /app/public/build/ /var/www/html/public/build/
 CMD apache2-foreground
 
-# Wykonaj migracje
-RUN php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
+## Wykonaj migracje
+#RUN php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
 
 RUN mkdir -p /public/archive \
     && mkdir -p /public/archive/genre \
