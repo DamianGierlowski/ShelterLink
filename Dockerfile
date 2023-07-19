@@ -51,12 +51,12 @@ CMD apache2-foreground
 ## Wykonaj migracje
 #RUN php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
 
-RUN mkdir -p /public/archive \
-    && mkdir -p /public/archive/genre \
-    && mkdir -p /public/archive/animal
+RUN mkdir -p /var/www/html/public/archive \
+    && mkdir -p /var/www/html/public/archive/genre \
+    && mkdir -p /var/www/html/public/archive/animal
 
-RUN mkdir -p /var/log \
-    && mkdir -p /var/cache \
-    && mkdir -p /var/cache/dev \
-    && mkdir -p /var/cache/prod \
+RUN mkdir -p /var/www/html/var/log \
+    && mkdir -p /var/www/html/var/cache \
+    && mkdir -p /var/www/html/var/cache/dev \
+    && mkdir -p /var/www/html/var/cache/prod
 
