@@ -15,6 +15,16 @@ FROM php:8.2.4-apache-bullseye AS php
 WORKDIR /var/www/html
 COPY docker/apache.conf /etc/apache2/sites-available/apache.conf
 
+
+RUN mkdir -p /var/www/html/public/archive \
+    && mkdir -p /var/www/html/public/archive/genre \
+    && mkdir -p /var/www/html/public/archive/animal
+
+RUN mkdir -p /var/www/html/var/log \
+    && mkdir -p /var/www/html/var/cache \
+    && mkdir -p /var/www/html/var/cache/dev \
+    && mkdir -p /var/www/html/var/cache/prod
+
 # włączenie OPcache
 RUN docker-php-ext-install opcache
 
@@ -50,13 +60,4 @@ CMD apache2-foreground
 
 ## Wykonaj migracje
 #RUN php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
-
-RUN mkdir -p /var/www/html/public/archive \
-    && mkdir -p /var/www/html/public/archive/genre \
-    && mkdir -p /var/www/html/public/archive/animal
-
-RUN mkdir -p /var/www/html/var/log \
-    && mkdir -p /var/www/html/var/cache \
-    && mkdir -p /var/www/html/var/cache/dev \
-    && mkdir -p /var/www/html/var/cache/prod
 
