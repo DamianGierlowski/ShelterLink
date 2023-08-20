@@ -1,49 +1,71 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}{{ 'views.login.title'|trans() }}{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
 
 {% block body %}
-    <section class="vh-100">
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                        <div class="card-body p-5 text-center">
-                            <form method="post">
 
-                                <h3 class="mb-5">Sign in</h3>
-
-                                <div class="form-outline mb-4">
-                                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control form-control-lg" autocomplete="email" required autofocus>
-
-                                    <label class="form-label" for="typeEmailX-2">Email</label>
-                                </div>
-
-                                <div class="form-outline mb-4">
-                                    <input type="password" name="password" id="inputPassword" class="form-control form-control-lg" autocomplete="current-password" required>
-                                    <label class="form-label" for="typePasswordX-2">Password</label>
-                                </div>
-
-
-                                <input type="hidden" name="_csrf_token"
-                                       value="{{ csrf_token('authenticate') }}"
-                                >
-
-
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-
-                                <hr class="my-4">
-                                <a class="nav-link" href="{{ path('app_register') }}">{{ 'sidebar.register'|trans }}</a>
-                                {% if app.user %}
-                                    <div class="mb-3">
-                                        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-                                    </div>
-                                {% endif %}
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="container mx-auto flex flex-col lg:flex-row items-center h-full">
+        <div class="w-full text-center justify-between h-48 py-auto flex items-center ">
+            <img src="{{ asset('images/logo.png') }}" alt="" class="w-64 mx-auto pt-4">
         </div>
-    </section>
+
+        <div class="w-80">
+
+            {{ form_start(form, {'attr': {'class': 'flex flex-col place-items-center'}}) }}
+
+            <div class="w-80 grid grid-cols-2 text-center my-6">
+                <div class="text-lg py-3 text-green-600 border-b-2 border-green-600 w-full">
+                    <a href="{{ path('app_login') }}" class="">{{ 'views.login.redirect.login'|trans }}</a>
+                </div>
+                <div class="text-lg py-3 hover:text-green-600 border-b-2 border-black hover:border-green-600 w-full">
+                    <a href="{{ path('app_register') }}" class="hover:shelter-text-green">{{ 'views.login.redirect.register'|trans }}</a>
+                </div>
+
+            </div>
+            {% if error is not null %}
+                <div class="mb-8">
+                    <p class="text-base">  {{ form_label(form.email,'views.login.email', {'attr': {'class': 'text-base'}}) }}</p>
+
+
+                    {{ form_widget(form.email, {'attr': {'class':'border-2 rounded-md border-red-800 text-base w-80 h-11 p-3.5'}}) }}
+                    <p class="text-sm text-red-600 italic">  {{ error.messageKey|trans(error.messageData, 'security') }}</p>
+
+                </div>
+
+                <div class="mb-8">
+                    <p class="text-base">  {{ form_label(form.password, 'views.login.password', {'attr': {'class': 'font-extrabold'}}) }}</p>
+
+                    {{ form_errors(form.password) }}
+                    {{ form_widget(form.password, {'attr': {'class':'border-2 rounded-md border-red-800 text-base w-80 h-11 p-3.5'}}) }}
+                    {{ form_help(form.password) }}
+                </div>
+            {% else %}
+
+                <div class="mb-8">
+                    <p class="text-base">  {{ form_label(form.email,'E-mail', {'attr': {'class': 'text-base'}}) }}</p>
+                    {{ form_widget(form.email, {'attr': {'class':'border-2 rounded-md border-stone-600 text-base w-80 h-11 p-3.5'}}) }}
+                </div>
+
+                <div class="mb-8">
+                    <p class="text-base">  {{ form_label(form.password, 'Hasło', {'attr': {'class': 'text-base'}}) }}</p>
+                    {{ form_widget(form.password, {'attr': {'class':'border-2 rounded-md border-stone-600 text-base w-80 h-11 p-3.5'}}) }}
+                </div>
+            {% endif %}
+
+            <input type="hidden" name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}"
+            >
+
+            <button type="submit" class="btn btn-primary object-center w-80 h-11 rounded-lg text-base bg-shelter-green text-white">{{ 'views.login.submit'|trans }}</button>
+
+            {{ form_end(form) }}
+
+        </div>
+
+
+
+    </div>
 {% endblock %}

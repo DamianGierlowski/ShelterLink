@@ -1,42 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}{{ 'views.register.title'|trans }}{% endblock %}
 
 {% block body %}
 
-    <section class="vh-100">
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                        <div class="card-body p-5 text-center">
-                            {{ form_start(registrationForm) }}
+    <div class="container mx-auto flex flex-col lg:flex-row items-center h-full">
+        <div class="w-full text-center justify-between h-48 py-auto flex items-center ">
+            <img src="{{ asset('images/logo.png') }}" alt="" class="w-64 mx-auto pt-4">
+        </div>
 
-                                <h3 class="mb-5">Register</h3>
-
-                                <div class="form-outline mb-4">
-                                    {{ form_row(registrationForm.email) }}
-                                </div>
-
-                                <div class="form-outline mb-4">
-                                    {{ form_row(registrationForm.plainPassword, {
-                                        label: 'Password'
-                                    }) }}
-
-                                </div>
-
-                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
-
-                                <hr class="my-4">
-                            <a class="nav-link" href="{{ path('app_login') }}">{{ 'sidebar.login'|trans }}</a>
-
-                            {{ form_end(registrationForm) }}
-                        </div>
-                    </div>
+        <div class="w-80">
+            {{ form_start(registrationForm, {'attr': {'class': 'flex flex-col place-items-center'}}) }}
+            <div class="w-80 grid grid-cols-2 text-center my-6">
+                <div class="text-base py-3  border-b-2 border-black hover:border-green-600 w-full">
+                    <a href="{{ path('app_login') }}" class="hover:text-green-600">{{ 'views.register.redirect.login'|trans }}</a>
+                </div>
+                <div class="text-base py-3 text-green-600 border-b-2 border-green-600 w-full">
+                    <a href="{{ path('app_register') }}" class="">{{ 'views.register.redirect.register'|trans }}</a>
                 </div>
             </div>
+
+            <div class="mb-6">
+                <p class="text-base">  {{ form_label(registrationForm.name,'views.register.name', {'attr': {'class': 'text-base'}}) }}</p>
+                {{ form_widget(registrationForm.name, {'attr': {'class':'border-2 rounded-md border-stone-600 text-base w-80 h-11 p-3.5'}}) }}
+            </div>
+
+            <div class="mb-6">
+                <p class="text-base">  {{ form_label(registrationForm.surname,'views.register.surname', {'attr': {'class': 'text-base'}}) }}</p>
+                {{ form_widget(registrationForm.surname, {'attr': {'class':'border-2 rounded-md border-stone-600 text-base w-80 h-11 p-3.5'}}) }}
+            </div>
+
+            <div class="mb-6">
+                <p class="text-base">  {{ form_label(registrationForm.email,'views.register.email', {'attr': {'class': 'text-base'}}) }}</p>
+                {{ form_widget(registrationForm.email, {'attr': {'class':'border-2 rounded-md border-stone-600 text-base w-80 h-11 p-3.5'}}) }}
+            </div>
+
+            <div class="mb-8">
+                <p class="text-base">  {{ form_label(registrationForm.plainPassword,'views.register.password', {'attr': {'class': 'text-base'}}) }}</p>
+                {{ form_widget(registrationForm.plainPassword, {'attr': {'class':'border-2 rounded-md border-stone-600 text-base w-80 h-11 p-3.5'}}) }}
+            </div>
+
+            <button type="submit" class="btn btn-primary object-center w-80 h-11 rounded-lg text-base bg-shelter-green text-white">{{ 'views.register.submit'|trans }}</button>
+
+            {{ form_end(registrationForm) }}
         </div>
-    </section>
+    </div>
 {% endblock %}

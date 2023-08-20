@@ -67,6 +67,24 @@ admin:
       image: 'Zdjęcie'
 
 views:
+  login:
+    title: "Logowanie"
+    email: 'E-mail'
+    password: 'Hasło'
+    submit: 'Zaloguj się'
+    redirect:
+      login: 'Zaloguj się'
+      register: 'Zarejestruj się'
+  register:
+    title: "Rejestracja"
+    name: 'Imię'
+    surname: 'Nazwisko'
+    email: 'E-mail'
+    password: 'Hasło'
+    submit: 'Zarejestruj się'
+    redirect:
+      login: 'Zaloguj się'
+      register: 'Zarejestruj się'
   home:
     title: 'Kogo dzisiaj odwiedzisz?'
     management: 'Zarządzanie'
@@ -95,4 +113,3 @@ views:
       title: 'Zwierzęta'
     rooms:
       title: 'Pomieszczenia'
-

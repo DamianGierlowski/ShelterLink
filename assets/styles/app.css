@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 body {
+    font-family: 'Nunito', sans-serif;
 }
 
 .shelter-green {
@@ -11,6 +12,10 @@ body {
 
 .shelter-text-green {
     color: #009241;
+}
+.shelter-size {
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .shelter-font {
