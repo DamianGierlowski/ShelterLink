@@ -6,4 +6,9 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
+// import 'jquery';
+import 'lightbox2/dist/css/lightbox.min.css';
+import 'lightbox2/dist/js/lightbox.min.js';
 import './styles/app.css';
+// import 'lightbox2/dist/js/lightbox.min.js';
+// assets/js/app.js

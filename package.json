@@ -23,6 +23,8 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "jquery": "^3.7.0",
+        "lightbox2": "^2.11.4",
         "vue": "^3.3.4"
     }
 }

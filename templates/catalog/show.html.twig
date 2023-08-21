@@ -3,44 +3,68 @@
 {% block title %}{{ room.code }}{% endblock %}
 
 {% block body %}
+<div class="w-full mb-36">
+
+    <div class="h-16 mt-7">
+
+    </div>
+
 
     {% if true == room.locked %}
-    <h1 class="my-12  text-7xl lg:text-5xl font-bold shelter-font text-red-500 text-center">
-        {{ 'views.catalog.show.title'|trans }}{{ room.code }}
-    </h1>
+        <h1 class="my-12 text-xl font-bold shelter-font text-red-500 text-center">
+            {{ 'views.catalog.show.title'|trans }}{{ room.code }}
+        </h1>
     {% else %}
-    <h1 class="my-12 mt-36 text-7xl lg:text-5xl font-bold shelter-font shelter-green text-center">
-        {{ 'views.catalog.show.title'|trans }}{{ room.code }}
-    </h1>
+        <h1 class="my-12 text-xl font-bold shelter-font shelter-green text-center">
+            {{ 'views.catalog.show.title'|trans }}{{ room.code }}
+        </h1>
     {% endif %}
     <div class="w-full flex flex-col lg:flex-row lg:flex-wrap justify-center items-center pb-36">
 
 
         {% for animal in animals %}
-            <div class="border-8 w-11/12 mb-9 rounded-[70px] shadow-xl lg:rounded-[25px] overflow-hidden shelter-border lg:flex-initial lg:w-[20rem] lg:mx-10">
+            <div class="border-2 mb-9 shadow-xl overflow-hidden shelter-border lg:flex-initial w-[22rem] rounded-2xl mx-4">
 
-                {% if null != animal.image  %}
-                <div class="h-[60rem] lg:h-[20rem] ">
-                    <img src="{{ asset(animal.image ? animal.getImageUrl() :  'images/question.png') }}" class="w-full h-full object-cover" >
-                </div>
+                {% if null != animal.image %}
+                    <div class=" h-[19rem]">
+                        <a href="{{ asset(animal.image ? animal.getImageUrl() :  'images/question.png') }}" data-lightbox="{{ animal.name }}">
+                            <img src="{{ asset(animal.image ? animal.getImageUrl() :  'images/question.png') }}" class="w-full h-full object-cover">
+                        </a>
+                    </div>
                 {% endif %}
 
-                <div class="h-96 flex flex-col shelter-font lg:h-64">
-                    <span class="shelter-green text-6xl my-10 ml-12 lg:text-2xl lg:ml-6 lg:mb-4">{{ animal.name }}</span>
-                    <div><span class="font-bold text-4xl ml-12 mb-6 lg:text-xl lg:ml-6">{{ 'views.catalog.show.fields.chip'|trans }} </span> <span class="text-4xl lg:text-xl">{{ animal.chip }}</span></div>
-                    <div><span class="font-bold text-4xl ml-12 mb-5 lg:text-xl lg:ml-6">{{ 'views.catalog.show.fields.gender'|trans }} </span> <span class="text-4xl lg:text-xl">{{ animal.gender }}</span></div>
-                    <div><span class="font-bold text-4xl ml-12 mb-5 lg:text-xl lg:ml-6">{{ 'views.catalog.show.fields.colour'|trans }} </span> <span class="text-4xl lg:text-xl">{{ animal.colour  }}</span></div>
-                    <div><span class="font-bold text-4xl ml-12 mb-5 lg:text-xl lg:ml-6">{{ 'views.catalog.show.fields.birthday'|trans }} </span> <span class="text-4xl lg:text-xl">{{ animal.birthdayDate|date("m-Y")  }}</span></div>
-                    <div><span class="font-bold text-4xl ml-12 mb-5 lg:text-xl lg:ml-6">{{ 'views.catalog.show.fields.admission'|trans }} </span> <span class="text-4xl lg:text-xl">{{ animal.admissionDate|date("d-m-Y")  }}</span></div>
+                <div class="min-h-48 flex flex-col shelter-font ">
+                    <span class="shelter-green text-3xl mx-6 mt-4">{{ animal.name }}</span>
+                    <div class="mx-6 my-2.5">
+                        <div>
+                            <span class="font-bold">{{ 'views.catalog.show.fields.chip'|trans }} </span>
+                            <span class="">{{ animal.chip }}</span></div>
+                        <div>
+                            <span class="font-bold ">{{ 'views.catalog.show.fields.gender'|trans }} </span>
+                            <span class="">{{ animal.gender }}</span>
+                        </div>
+                        <div>
+                            <span class="font-bold ">{{ 'views.catalog.show.fields.colour'|trans }} </span>
+                            <span class="">{{ animal.colour }}</span>
+                        </div>
+                        <div>
+                            <span class="font-bold ">{{ 'views.catalog.show.fields.birthday'|trans }} </span>
+                            <span class="">{{ animal.birthdayDate|date("m-Y") }}</span>
+                        </div>
+                        <div>
+                            <span class="font-bold ">{{ 'views.catalog.show.fields.admission'|trans }} </span>
+                            <span class="">{{ animal.admissionDate|date("d-m-Y") }}</span>
+                        </div>
+                    </div>
+
                 </div>
-
-
             </div>
 
         {% endfor %}
 
 
     </div>
-    {% include 'partials/_nav_bottom.html.twig' with {back_redirect: 'app_catalog', parameters: {'guid':genre.guid}}%}
+</div>
+    {% include 'partials/_nav_bottom.html.twig' with {back_redirect: 'app_catalog', parameters: {'guid':genre.guid}} %}
 
 {% endblock %}

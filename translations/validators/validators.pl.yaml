@@ -1,0 +1,3 @@
+user:
+  email:
+    exist: 'W systemie znajduje się już podany adres e-mail'

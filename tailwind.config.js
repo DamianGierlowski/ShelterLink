@@ -6,7 +6,11 @@ module.exports = {
         "./templates/**/*.html.twig",
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontSize: {
+                'base': '16px', // Bazowa czcionka dla domyślnych ekranów
+            },
+        },
     },
     plugins: [
     ],

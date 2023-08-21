@@ -21,23 +21,36 @@
             </div>
 
             <div class="mb-6">
-                <p class="text-base">  {{ form_label(registrationForm.name,'views.register.name', {'attr': {'class': 'text-base'}}) }}</p>
+                <p class="text-base">  {{ form_label(registrationForm.name, 'views.register.name', {'attr': {'class': 'text-base'}}) }}</p>
                 {{ form_widget(registrationForm.name, {'attr': {'class':'border-2 rounded-md border-stone-600 text-base w-80 h-11 p-3.5'}}) }}
+                <div class="text-sm text-red-600 italic">
+                    {{ form_errors(registrationForm.name) }}
+                </div>
             </div>
 
             <div class="mb-6">
                 <p class="text-base">  {{ form_label(registrationForm.surname,'views.register.surname', {'attr': {'class': 'text-base'}}) }}</p>
                 {{ form_widget(registrationForm.surname, {'attr': {'class':'border-2 rounded-md border-stone-600 text-base w-80 h-11 p-3.5'}}) }}
+                <div class="text-sm text-red-600 italic">
+                    {{ form_errors(registrationForm.surname) }}
+                </div>
             </div>
 
             <div class="mb-6">
                 <p class="text-base">  {{ form_label(registrationForm.email,'views.register.email', {'attr': {'class': 'text-base'}}) }}</p>
                 {{ form_widget(registrationForm.email, {'attr': {'class':'border-2 rounded-md border-stone-600 text-base w-80 h-11 p-3.5'}}) }}
+                <div class="text-sm text-red-600 italic">
+                    {{ form_errors(registrationForm.email) }}
+                </div>
             </div>
 
             <div class="mb-8">
                 <p class="text-base">  {{ form_label(registrationForm.plainPassword,'views.register.password', {'attr': {'class': 'text-base'}}) }}</p>
                 {{ form_widget(registrationForm.plainPassword, {'attr': {'class':'border-2 rounded-md border-stone-600 text-base w-80 h-11 p-3.5'}}) }}
+                <div class="text-sm text-red-600 italic">
+                    {{ form_errors(registrationForm.plainPassword)|trans }}
+                </div>
+
             </div>
 
             <button type="submit" class="btn btn-primary object-center w-80 h-11 rounded-lg text-base bg-shelter-green text-white">{{ 'views.register.submit'|trans }}</button>

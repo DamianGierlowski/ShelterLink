@@ -3,29 +3,36 @@
 {% block title %}{{ 'room.title'|trans }}{% endblock %}
 
 {% block body %}
-    <div class="w-full pb-36">
-        <h1 class="mt-24 mt-36 text-7xl font-bold text-center shelter-font lg:mt-10">
-            {{ 'views.catalog.title'|trans }}
-        </h1>
-        <div class="mb-24 mt-6 text-4xl text-center shelter-font lg:mt-10 text-center">
-            <p>
-               (  <span class="shelter-green">{{ 'views.catalog.green'|trans }}</span>
-                - {{ 'views.catalog.available'|trans }},
-                <span class="text-red-500">{{ 'views.catalog.red'|trans }}</span>
-                - {{ 'views.catalog.not_available'|trans }}
-               )
-            </p>
+    <div class="w-full mb-36">
+
+        <div class="h-16 mt-7">
+
         </div>
 
-        <div class="flex flex-row flex-wrap mb-32">
+        <div>
+            <h1 class="text-lg font-bold text-center">
+                {{ 'views.catalog.title'|trans }}
+            </h1>
+            <div class="text-sm text-center mt-4">
+                <p>
+                    (  <span class="shelter-green">{{ 'views.catalog.green'|trans }}</span>
+                    - {{ 'views.catalog.available'|trans }},
+                    <span class="text-red-500">{{ 'views.catalog.red'|trans }}</span>
+                    - {{ 'views.catalog.not_available'|trans }}
+                    )
+                </p>
+            </div>
+        </div>
+
+        <div class="flex flex-row flex-wrap pb-16">
             {% for room in rooms %}
-                <div class="text-center ml-16 mr-5 mt-10">
+                <div class="text-center mx-4 mt-7">
                     <a href="{{ path('app_catalog_show', {'genreGuid': genre.guid, 'guid': room.guid}) }}">
-                        <img src="{{ asset('images/door.png') }}" alt="" class="rounded-3xl drop-shadow-xl object-cover w-96 h-96 mb-9 lg:w-36 lg:h-36">
+                        <img src="{{ asset('images/door.png') }}" alt="" class="rounded-3xl drop-shadow-xl object-cover w-40 h-40">
                         {% if true == room.locked %}
-                        <span class="place-self-center text-8xl shelter-font text-red-500 lg:text-5xl">{{ room.code}}</span>
+                        <span class="place-self-center text-lg font-bold text-red-500 ">{{ room.code}}</span>
                         {% else %}
-                            <span class="place-self-center text-8xl shelter-font shelter-green lg:text-5xl">{{ room.code}}</span>
+                            <span class="place-self-center text-lg font-bold shelter-green ">{{ room.code}}</span>
                         {% endif %}
                     </a>
                 </div>

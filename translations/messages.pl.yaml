@@ -85,6 +85,9 @@ views:
     redirect:
       login: 'Zaloguj się'
       register: 'Zarejestruj się'
+    errors:
+      length: 'Hasło powinno składać się z minimum 6 znaków'
+
   home:
     title: 'Kogo dzisiaj odwiedzisz?'
     management: 'Zarządzanie'
