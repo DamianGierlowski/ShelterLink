@@ -6,10 +6,10 @@ RUN composer install --ignore-platform-reqs --no-interaction --no-scripts --pref
 FROM node:16.13.1 AS npm
 WORKDIR /app
 COPY ./package.json ./webpack.config.js ./tailwind.config.js ./postcss.config.js /app/
-RUN npm install
+RUN yarn install
 COPY ./assets/ /app/assets/
 COPY ./templates/ /app/templates/
-RUN npm run dev
+RUN yarn encore dev
 
 FROM php:8.2.4-apache-bullseye AS php
 WORKDIR /var/www/html

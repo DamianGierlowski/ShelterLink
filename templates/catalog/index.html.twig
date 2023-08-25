@@ -5,17 +5,25 @@
 {% block body %}
     <div class="w-full mb-36">
 
-        <div class="h-16 mt-7">
-
+        <div class="h-16 mt-7 mx-4 flex justify-end">
+            <div class="text-center">
+                {% if app.user == null %}
+                    <a href="{{ path('app_login') }}" class="text-sm">{{'views.login.redirect.login'|trans}}</a>
+                {% else %}
+                <img src="{{ asset('images/question.png') }}" alt=""
+                     class="rounded-3xl drop-shadow-xl object-cover w-11 h-11">
+                <p class="text-sm">{{ app.user.name }}</p>
+                {% endif %}
+            </div>
         </div>
 
-        <div>
+        <div class="mt-16">
             <h1 class="text-lg font-bold text-center">
                 {{ 'views.catalog.title'|trans }}
             </h1>
             <div class="text-sm text-center mt-4">
                 <p>
-                    (  <span class="shelter-green">{{ 'views.catalog.green'|trans }}</span>
+                    ( <span class="shelter-green">{{ 'views.catalog.green'|trans }}</span>
                     - {{ 'views.catalog.available'|trans }},
                     <span class="text-red-500">{{ 'views.catalog.red'|trans }}</span>
                     - {{ 'views.catalog.not_available'|trans }}
@@ -28,11 +36,12 @@
             {% for room in rooms %}
                 <div class="text-center mx-4 mt-7">
                     <a href="{{ path('app_catalog_show', {'genreGuid': genre.guid, 'guid': room.guid}) }}">
-                        <img src="{{ asset('images/door.png') }}" alt="" class="rounded-3xl drop-shadow-xl object-cover w-40 h-40">
+                        <img src="{{ asset('images/door.png') }}" alt=""
+                             class="rounded-3xl drop-shadow-xl object-cover w-40 h-40">
                         {% if true == room.locked %}
-                        <span class="place-self-center text-lg font-bold text-red-500 ">{{ room.code}}</span>
+                            <span class="place-self-center text-lg font-bold text-red-500 ">{{ room.code }}</span>
                         {% else %}
-                            <span class="place-self-center text-lg font-bold shelter-green ">{{ room.code}}</span>
+                            <span class="place-self-center text-lg font-bold shelter-green ">{{ room.code }}</span>
                         {% endif %}
                     </a>
                 </div>
@@ -42,6 +51,6 @@
 
     </div>
 
-    {% include 'partials/_nav_bottom.html.twig' with {back_redirect: 'app_home', parameters: {}}%}
+    {% include 'partials/_nav_bottom.html.twig' with {back_redirect: 'app_home', parameters: {}} %}
 
 {% endblock %}
