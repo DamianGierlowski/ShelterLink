@@ -40,15 +40,19 @@ class ImportService
             }
 
             $found = $this->animalRepository->findOneBy(['chip' => $animal->getChip()]);
+
+
+            $cleanName = preg_replace('/^[A-Za-z0-9\s]+(?=\s)/', '', trim($animal->getName()));
+            $cleanRoom = trim(preg_replace('/\.\d+/', '', $animal->getRoom()));
+
             if (null === $found) {
                 $found = new Animal();
                 $found
                     ->setGuid(GuidGenerator::generate())
                     ->setChip($animal->getChip())
+                    ->setName($cleanName)
                 ;
             }
-            $cleanName = preg_replace('/^[A-Za-z0-9\s]+(?=\s)/', '', trim($animal->getName()));
-            $cleanRoom = trim(preg_replace('/\.\d+/', '', $animal->getRoom()));
 
             $room = $this->roomRepository->findOneBy(['code' => trim($cleanRoom)]);
 
@@ -56,7 +60,6 @@ class ImportService
             $admisionDate = new DateTimeImmutable($animal->getAdmission());
 
             $found
-                ->setName($cleanName)
                 ->setRoom($room)
                 ->setColour($animal->getColour())
                 ->setGender("5" == $animal->getGender()? "F" : "M")

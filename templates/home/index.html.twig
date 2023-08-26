@@ -6,16 +6,15 @@
     <div class="w-full mb-36">
 
         <div class="h-16 mt-7 mx-4 flex justify-end">
-            <div>
+            <div class="text-center">
                 {% if app.user == null %}
-                    <a href="{{ path('app_login') }}" class="text-sm">Zaloguj się</a>
+                    <a href="{{ path('app_login') }}" class="text-sm">{{'views.login.redirect.login'|trans}}</a>
                 {% else %}
                     <img src="{{ asset('images/question.png') }}" alt=""
                          class="rounded-3xl drop-shadow-xl object-cover w-11 h-11">
                     <p class="text-sm">{{ app.user.name }}</p>
                 {% endif %}
             </div>
-
         </div>
 
         <h1 class="text-xl font-bold text-center shelter-font mt-7">

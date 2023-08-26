@@ -9,7 +9,7 @@
 
     <div class="container mx-auto flex flex-col lg:flex-row items-center h-full">
         <div class="w-full text-center justify-between h-48 py-auto flex items-center ">
-            <img src="{{ asset('images/logo.png') }}" alt="" class="w-64 mx-auto pt-4">
+            <a href="{{ path('app_home') }}" class="mx-auto pt-4"><img src="{{ asset('images/logo.png') }}" alt="" class="w-64"></a>
         </div>
 
         <div class="w-80">
@@ -64,10 +64,6 @@
             {{ form_end(form) }}
 
         </div>
-
-
-
-        {% include 'partials/_nav_bottom.html.twig' with {back_redirect: 'app_home', parameters: {}} %}
 
     </div>
 {% endblock %}
